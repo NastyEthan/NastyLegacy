@@ -1,6 +1,9 @@
 # NastyLegacy
 
-Roles:
+**Project Description**:
+A utilities website to help users with basic daily tasks. For example, we expect to implement a calculator, password generator/manager, timer, and maybe even a dinosaur game! 
+
+**Roles**:
 |Role| Member |
 | - | - |
 | Project Designer | Ellen Xu |
