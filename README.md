@@ -1,11 +1,12 @@
 # NastyLegacy
 
 Roles:
-|-|-|
-|Project Designer| Ellen Xu |
-|Github Manager| Ethan Vo |
-|Deploy Manager| Michael Chen |
-|Scrum Master| Sahil Samar |
+|Role| Member |
+| - | - |
+| Project Designer | Ellen Xu |
+| Github Manager | Ethan Vo |
+| Deploy Manager | Michael Chen |
+| Scrum Master | Sahil Samar |
 
 ## Week 1
 
