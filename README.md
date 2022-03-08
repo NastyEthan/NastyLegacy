@@ -7,7 +7,7 @@ Roles:
 | Github Manager | Ethan Vo |
 | Deploy Manager | Michael Chen |
 | Scrum Master | Sahil Samar |
-| Design Manager | Sahil Ramachandran |
+| Design Manager | Anirudh Ramachandran |
 
 ## Week 1
 
