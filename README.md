@@ -11,8 +11,41 @@ Roles:
 
 ## Week 1
 
+### Week # Progress
+| Progress | Evidence |
+| - | - |
+| N/A | N/A |
+
+### Week # Grading
+| Name | Grade | Work | Evidence |
+| - | - | - | - |
+| Ethan | | | |
+| Anirudh | | | |
+| Michael | | | |
+| James | | | |
+
+| Grade | Requirement | Evidence |
+| - | - | - |
+| /# | | | |
+
 ## Week 2
 
+### Week # Progress
+| Progress | Evidence |
+| - | - |
+| N/A | N/A |
+
+### Week # Grading
+| Name | Grade | Work | Evidence |
+| - | - | - | - |
+| Ethan | | | |
+| Anirudh | | | |
+| Michael | | | |
+| James | | | |
+
+| Grade | Requirement | Evidence |
+| - | - | - |
+| /# | | | |
 ## Week 3
 
 ## Week 4
