@@ -1,11 +1,13 @@
 # NastyLegacy
 
 **Project Description**:
+
 A utilities website to help users with basic daily tasks. For example, we expect to implement a calculator, password generator/manager, timer, and maybe even a dinosaur game! 
 
 [Link to Project Plans/Ideas/Wires](https://github.com/NastyEthan/NastyLegacy/wiki/Project-Plans-Ideas-Wires) 
 
 **Roles**:
+
 |Role| Member |
 | - | - |
 | Project Designer | Ellen Xu |
@@ -15,6 +17,7 @@ A utilities website to help users with basic daily tasks. For example, we expect
 | Design Manager | Anirudh Ramachandran |
 
 Sponsor will be any website that needs utilities such as canvas, or teachers especially math.
+
 ## Week 0
 
 ### Week # Progress
