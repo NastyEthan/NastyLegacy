@@ -12,6 +12,25 @@ A utilities website to help users with basic daily tasks. For example, we expect
 | Scrum Master | Sahil Samar |
 | Design Manager | Anirudh Ramachandran |
 
+## Week 0
+
+### Week # Progress
+| Progress | Evidence |
+| - | - |
+| N/A | N/A |
+
+### Week # Grading
+| Name | Grade | Work | Evidence |
+| - | - | - | - |
+| Ethan | | | |
+| Anirudh | | | |
+| Michael | | | |
+| James | | | |
+
+| Grade | Requirement | Evidence |
+| - | - | - |
+| /# | | | |
+
 ## Week 1
 
 ### Week # Progress
