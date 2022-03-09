@@ -14,6 +14,7 @@ A utilities website to help users with basic daily tasks. For example, we expect
 | Scrum Master | Sahil Samar |
 | Design Manager | Anirudh Ramachandran |
 
+Sponsor will be any website that needs utilities such as canvas, or teachers especially math.
 ## Week 0
 
 ### Week # Progress
