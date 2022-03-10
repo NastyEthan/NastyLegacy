@@ -10,13 +10,13 @@ A utilities website to help users with basic daily tasks. For example, we expect
 
 |Role| Member |
 | - | - |
-| Project Designer | Ellen Xu |
+| Technical Officer | Ellen Xu |
 | Github Manager | Ethan Vo |
 | Deploy Manager | Michael Chen |
 | Scrum Master | Sahil Samar |
 | Design Manager | Anirudh Ramachandran |
 
-Sponsor will be any website that needs utilities such as canvas, or teachers especially math.
+Sponsor will be any website that needs utilities such as canvas, or teachers especially math. We will ask the AP Stats teacher Mr. Edelstein to sponsor our project. 
 
 ## Week 0
 
