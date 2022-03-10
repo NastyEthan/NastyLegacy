@@ -20,6 +20,8 @@ Sponsor will be any website that needs utilities such as canvas, or teachers esp
 
 ## Week 0
 
+[Link to issue for Team for this week](https://github.com/NastyEthan/NastyLegacy/issues/1)
+
 ### Week # Progress
 | Progress | Evidence |
 | - | - |
