@@ -22,22 +22,10 @@ Sponsor will be any website that needs utilities such as canvas, or teachers esp
 
 [Link to issue for Team for this week](https://github.com/NastyEthan/NastyLegacy/issues/1)
 
-### Week # Progress
+### Week 0 Progress
 | Progress | Evidence |
 | - | - |
-| N/A | N/A |
-
-### Week # Grading
-| Name | Grade | Work | Evidence |
-| - | - | - | - |
-| Ethan | | | |
-| Anirudh | | | |
-| Michael | | | |
-| James | | | |
-
-| Grade | Requirement | Evidence |
-| - | - | - |
-| /# | | | |
+| Planning | [Link](https://github.com/NastyEthan/NastyLegacy/issues/1) |
 
 ## Week 1
 
