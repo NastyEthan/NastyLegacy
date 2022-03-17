@@ -1,3 +1,3 @@
-{% navigation.html %}
+{% include navigation.html %}
 
 # Project Overvew
