@@ -1,1 +1,4 @@
+{% navigation.html %}
+
+
 # Our ideas
