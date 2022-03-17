@@ -48,6 +48,7 @@ Sponsor will be any website that needs utilities such as canvas, or teachers esp
 | Sahil Samar | | | |
 | Anirudh Ramachandran | | | |
 
+
 | Grade | Requirement | Evidence |
 | - | - | - |
 | /# | | | |
@@ -61,12 +62,15 @@ Sponsor will be any website that needs utilities such as canvas, or teachers esp
 | N/A | N/A |
 
 ### Week # Grading
+
 | Name | Grade | Work | Evidence |
 | - | - | - | - |
-| Ethan | | | |
-| Anirudh | | | |
-| Michael | | | |
-| James | | | |
+| Ellen Xu | | | |
+| Ethan Vo | | | |
+| Michael Chen | | | |
+| Sahil Samar | | | |
+| Anirudh Ramachandran | | | |
+
 
 | Grade | Requirement | Evidence |
 | - | - | - |
