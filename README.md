@@ -25,6 +25,7 @@ A utilities website to help users with basic daily tasks. For example, we expect
 Sponsor will be any website that needs utilities such as canvas, or teachers especially math. We will ask the AP Stats teacher Mr. Edelstein to sponsor our project. 
 
 ### Week 0 Progress
+
 | Progress | Evidence |
 | - | - |
 | Planning | [Link](https://github.com/NastyEthan/NastyLegacy/issues/1) |
@@ -32,17 +33,20 @@ Sponsor will be any website that needs utilities such as canvas, or teachers esp
 ## Week 1
 
 ### Week # Progress
+
 | Progress | Evidence |
 | - | - |
 | N/A | N/A |
 
 ### Week # Grading
+
 | Name | Grade | Work | Evidence |
 | - | - | - | - |
-| Ethan | | | |
-| Anirudh | | | |
-| Michael | | | |
-| James | | | |
+| Ellen Xu | | | |
+| Ethan Vo | | | |
+| Michael Chen | | | |
+| Sahil Samar | | | |
+| Anirudh Ramachandran | | | |
 
 | Grade | Requirement | Evidence |
 | - | - | - |
@@ -51,6 +55,7 @@ Sponsor will be any website that needs utilities such as canvas, or teachers esp
 ## Week 2
 
 ### Week # Progress
+
 | Progress | Evidence |
 | - | - |
 | N/A | N/A |
