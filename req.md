@@ -1,4 +1,4 @@
-{% navigation.html %}
+{% include navigation.html %}
 
 
 # Project Requirements
