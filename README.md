@@ -1,5 +1,11 @@
 # NastyLegacy
 
+
+
+## Week 0
+
+[Link to review ticket for this week](https://github.com/NastyEthan/NastyLegacy/issues/1)
+
 **Project Description**:
 
 A utilities website to help users with basic daily tasks. For example, we expect to implement a calculator, password generator/manager, timer, and other features specifically useful to teachers! 
@@ -17,10 +23,6 @@ A utilities website to help users with basic daily tasks. For example, we expect
 | Design Manager | Anirudh Ramachandran |
 
 Sponsor will be any website that needs utilities such as canvas, or teachers especially math. We will ask the AP Stats teacher Mr. Edelstein to sponsor our project. 
-
-## Week 0
-
-[Link to review ticket for this week](https://github.com/NastyEthan/NastyLegacy/issues/1)
 
 ### Week 0 Progress
 | Progress | Evidence |
