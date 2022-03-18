@@ -1,0 +1,145 @@
+<!-- This variable sets name of browser tab  -->
+{% extends "layouts/base.html" %}
+
+{% set project = "About" %}
+
+{% block background %}
+    <body style="background-color: #5B3B8C;">  </body>
+{% endblock %}
+
+{% block body %}
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-rows: 200px 50px;
+            grid-template-columns: auto auto auto auto auto;
+            grid-gap: 10px;
+            padding: 10px;
+        }
+        .column {
+        float: left;
+        width: 50%;
+        text-align: center;
+    }
+        .grid-container > div {
+            text-align: center;
+            padding: 10px;
+            font-size: 30px;
+        }
+
+        h1 {
+            font-family: "Bebas Neue";
+            text-align: center;
+            font-size:80px;
+        }
+        h2 {
+            font-family: "Bebas Neue";
+            text-align: center;
+            font-size:69px
+        }
+        html, body {
+            background-color: #5B3B8C;
+        }
+        p {
+            font-family: "Raleway"
+        }
+        a.btn {
+            width: 30%; 
+        }
+        .btn:link,
+        .btn:visited {
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 100px;
+            transition: all .2s;
+            color: lightpink;
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        a.name {
+            font-family: Raleway;
+            font-size: 20px;
+        }
+
+        body.dark-mode {
+            background-color: #35363a;
+        }
+        html.dark-mode {
+            background-color: #35363a;
+        }
+    </style>
+    <br>
+    <h1>Nasty: About Us</h1>
+    <br>
+    <!-- TRY THIS https://stackoverflow.com/questions/42051528/how-do-i-make-an-image-clickable TY -->
+
+
+    <div class="grid-container">
+        <div>
+            <a href="/michael/"><img src="/static/assets/profileimages/michaelprofile.jpg" alt="Michael's picture" style="width: 200px; height: 200px; object-fit: cover" ></a>
+        </div>
+        <div>
+            <a href="/ethan/"><img src="/static/assets/profileimages/ethanprofile.jpg" alt="Ethan's picture" style="width: 200px; height: 200px; object-fit: cover"></a>
+        </div>
+        <div>
+            <a href=/anirudh/ ><img src="/static/assets/profileimages/anirudhprofile.jpg" alt="Anirudh's picture" style="width: 200px; height: 200px; object-fit: cover "></a>
+        </div>
+        <div>
+            <a href=/sahil/ ><img src="/static/assets/sahilimages/sahilnomask.JPG" alt="Sahil's picture" style="width: 200px; height: 200px; object-fit:cover"></a>
+        </div>
+        <div>
+            <a href=/byron/ ><img src="/static/assets/byronimages/byronmaskoff.png" alt="Byron's picture" style="width: 200px; height: 200px; object-fit:cover"></a>
+        </div>
+        <div>
+            <a class="name" style="color:white" href="/michael"> Michael Chen </a>
+        </div>
+        <div>
+            <a class="name" style="color:white" href="/ethan">  Ethan Vo </a>
+        </div>
+        <div>
+            <a class="name" style="color:white" href="/anirudh/"> Anirudh Ramachandran</a>
+
+        </div>
+        <div>
+            <a class="name" style="color:white" href="/sahil"> Sahil Samar </a>
+        </div>
+        <div>
+            <a class="name" style="color:white" href="/byron/"> Byron Lu </a>
+        </div>
+    </div>
+
+
+    <br>
+    <br>
+    <div class="row">
+        <div class="column">
+            <h2 class="text-center">Journals</h2>
+            <div class="container">
+                <a href="https://docs.google.com/document/d/1R43f8RuXc5HnxJAlKmvdIIxjIf3VF8rpTDBk7qxklEU/edit?usp=sharing" target="_blank" class="btn">Michael, Sahil, & Byron</a>
+                <a href="https://docs.google.com/document/d/1-AS5NcpL8dvRFaj1oww0tR8XM1lf20oFSDFuEdq7OxQ/edit?usp=sharing" target="_blank" class="btn">Ethan & Anirudh</a>
+            </div>
+        </div>  
+        <div class="column">
+            <h2 class="text-center">Important Links</h2>
+            <div class="container">
+                <a href="https://github.com/NastyEthan/NastyAwakened" target="_blank" class="btn">REPOSITORY</a>
+                <a href="https://readme.nastyawakened.cf" target="_blank" class="btn">README</a>
+            </div>
+        </div>     
+    </div>
+
+
+
+{% endblock %}
