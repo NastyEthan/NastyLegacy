@@ -3,7 +3,7 @@
 
 # Project Requirements
 
-[Current Requirements/Ideas](https://github.com/NastyLegacy/NastyLegacy/wiki/New-Project-Plans-Ideas-Wires)
+[Initial Requirements/Ideas are on the linked wiki](https://github.com/NastyLegacy/NastyLegacy/wiki/New-Project-Plans-Ideas-Wires)
 
 # Progress
 
