@@ -32,26 +32,25 @@ Sponsor will be any website that needs utilities such as canvas, or teachers esp
 
 ## Week 1
 
-### Week # Progress
+[Link to review ticket for this week]()
 
-| Progress | Evidence |
+**New Project Description**:
+
+We have completely changed our idea. We are now building a student database for computer science classes. This will be a database that contains user information and can be updated by incoming students. Information will include things like period, group, name, contact, and more. We will try to find a way to backup the database and explore with different techniques in storing and retrieving the data.
+
+[Link to New Project Plans/Ideas/Wires]() 
+
+**Roles. These are the same as before. **:
+
+|Role| Member |
 | - | - |
-| N/A | N/A |
+| Technical Officer | Ellen Xu |
+| Github Manager | Ethan Vo |
+| Deploy Manager | Michael Chen |
+| Scrum Master | Sahil Samar |
+| Design Manager | Anirudh Ramachandran |
 
-### Week # Grading
-
-| Name | Grade | Work | Evidence |
-| - | - | - | - |
-| Ellen Xu | | | |
-| Ethan Vo | | | |
-| Michael Chen | | | |
-| Sahil Samar | | | |
-| Anirudh Ramachandran | | | |
-
-
-| Grade | Requirement | Evidence |
-| - | - | - |
-| /# | | | |
+Our sponsor is Mr. Mortensen. We will be designing this database for his use in teaching computer science at Del Norte. 
 
 ## Week 2
 
