@@ -1,6 +1,7 @@
 # NastyLegacy
 
-
+## Our project sponsor for this trimester is Mr. Mortensen, and we are building a user database for him to help him as a teacher of Computer Science at Del Norte.
+### [Link to ScrumBoard to see what we are working on](https://github.com/NastyLegacy/NastyLegacy/projects/1)
 
 ## Week 0
 
