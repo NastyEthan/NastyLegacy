@@ -3,25 +3,25 @@
 
 ## Sahil Samar
 
-- [Github]()
+- [Github](https://github.com/AD1616)
 - Job: Scrum Master
 
 ## Ellen Xu
 
-- [Github]()
+- [Github](https://github.com/xu-ellen)
 - Job: Technical Officer
 
 ## Anirudh Ramachandran
 
-- [Github]()
+- [Github](https://github.com/Anirudh123nasty)
 - Job: Design Manager
 
 ## Ethan Vo
 
-- [Github]()
+- [Github](https://github.com/NastyEthan)
 - Job: Github Admin
 
 ## Michael Chen
 
-- [Github]()
+- [Github](https://github.com/Michaelc179)
 - Job: Deployment Manager
