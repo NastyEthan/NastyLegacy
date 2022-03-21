@@ -33,7 +33,7 @@ Sponsor will be any website that needs utilities such as canvas, or teachers esp
 
 ## Week 1
 
-[Link to review ticket for this week]()
+[Link to review ticket for this week](https://github.com/NastyLegacy/NastyLegacy/issues/14)
 
 **New Project Description**:
 
