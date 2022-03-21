@@ -1,5 +1,6 @@
-from flask import render_template, request # flask
+from flask import render_template, Flask # flask
 
+app = Flask(__name__)
 # Blueprints
 
 
