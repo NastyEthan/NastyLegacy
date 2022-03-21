@@ -39,7 +39,7 @@ Sponsor will be any website that needs utilities such as canvas, or teachers esp
 
 We have completely changed our idea. We are now building a student database for computer science classes. This will be a database that contains user information and can be updated by incoming students. Information will include things like period, group, name, contact, and more. We will try to find a way to backup the database and explore with different techniques in storing and retrieving the data.
 
-[Link to New Project Plans/Ideas/Wires](https://github.com/NastyLegacy/NastyLegacy/wiki/New-Project-Plans-Ideas-Wires). These are from our first meeting with Mr. Mortensen.
+[Link to New Project Plans/Ideas/Wires](https://nastylegacy.github.io/NastyLegacy/docs/req). These are from our first meeting with Mr. Mortensen.
 
 **Roles. These are the same as before. **:
 
