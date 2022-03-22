@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+.idea/libraries/Beige_and_Emerald_Simple_Modern_SWOT_Research_Graph.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/NastyLegacy.iml
+.idea/runConfigurations.xml
+.idea/vcs.xml
+.idea/workspace.xml
