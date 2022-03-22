@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<!-- EXTEND (layout.html), this is a template for all rendered pages in the project -->
+{% extends "layouts/base.html" %}
+
+<!-- CONTENT (in <head>), content for this page -->
+{% block meta %}
+    <style>
+        body {
+            background-image: url('https://nwc.edu/academics/photos/program-photos/computer-science.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100%;
+            height: fit-content;
+        }
+    </style>
+    <title>CRUD page</title>
+
+    <div class="container py-4 text-light">
+        <header class="pb-3 mb-4 border-bottom">
+            <h1><mark>CS Contacts</mark></h1>
+        </header>
+
+        <div class="container py-4">
+            <div class="p-5 mb-4 bg-light text-dark rounded-3">
+                <h2>Table Viewer</h2>
+                <div class="row align-items-md-stretch">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row align-items-md-stretch">
+                    <div class="container-fluid py-5">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Number</th>
+                                <th>Email</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- Loop through rows in table -->
+                            {% for row in table %}
+                                <tr>
+                                    <td>{{ row['sid'] }}</td>
+                                    <td>{{ row['studentName'] }}</td>
+                                    <td>{{ row['phoneNumber'] }}</td>
+                                    <td>{{ row['email'] }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="container py-4">
+            <div class="p-5 mb-4 bg-light text-dark rounded-3">
+                <h2>Create a new record</h2>
+                <form method="POST" ID="create" action={{url_for('anirudhcrud.create')}}>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th><label for="sid">ID</label></th>
+                            <th><label for="Name">Name</label></th>
+                            <th><label for="Number">Phone Number</label></th>
+                            <th><label for="Email">Email</label></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><input type="text" name="sid" id="sid" required></td>
+                            <td><input type="text" name="studentName" id="studentName" required></td>
+                            <td><input type="Number" name="phoneNumber" id="phoneNumber" placeholder="Bob" required></td>
+                            <td><input type="Email" name="email" id="email" placeholder="Bob" required></td>
+                            <td><input type="submit" value="Create"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="container py-4">
+
+            <div class="row mb-4 bg-light text-dark rounded-3">
+
+                <div class="col-md-3">
+                    <div class="p-5 mb-4 bg-light text-dark rounded-3">
+                        <h2>Read</h2>
+                        <form method="POST" ID="read" action={{url_for('anirudhcrud.read')}} >
+                            <table id="read_table">
+                                <tr><th><label for="read_sid">ID</label></th></tr>
+                                <tr>
+                                    <td>
+                                        <select name="sid" id="read_sid">
+                                            <optgroup label="sid">
+                                                {% for row in table %}
+                                                    <option label="{{ row['sid'] }}">{{ row['sid'] }}</option>
+                                                {% endfor %}
+                                            </optgroup>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Read">
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="p-5 mb-4 bg-light text-dark rounded-3">
+                        <h2>Update</h2>
+                        <form method="POST" ID="update" action={{url_for('anirudhcrud.update')}} >
+                            <table id="update_table">
+                                <tr>
+                                    <th><label for="update_sid">ID</label></th>
+                                    <th><label for="update_studentName">Name</label></th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <select name="sid" id="update_sid">
+                                            <optgroup label="sid">
+                                                {% for row in table %}
+                                                    <option label="{{ row['sid'] }}">{{ row['sid'] }}</option>
+                                                {% endfor %}
+                                            </optgroup>
+                                        </select>
+                                    </td>
+                                    <td><input type="text" name="studentName" id="update_studentName" required></td>
+                                    <td><input type="submit" value="Update"></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="p-5 mb-4 bg-light text-dark rounded-3">
+                        <h2>Delete</h2>
+                        <form method="POST" ID="read" action={{url_for('anirudhcrud.delete')}} >
+                            <table id="read_table">
+                                <tr><th><label for="delete_sid">ID</label></th></tr>
+                                <tr>
+                                    <td>
+                                        <select name="sid" id="delete_sid">
+                                            <optgroup label="sid">
+                                                {% for row in table %}
+                                                    <option label="{{ row['sid'] }}">{{ row['sid'] }}</option>
+                                                {% endfor %}
+                                            </optgroup>
+                                        </select>
+                                    </td>
+                                    <td><input type="submit" value="Delete"></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}
