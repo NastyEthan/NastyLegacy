@@ -1,16 +1,16 @@
 from flask import Blueprint, render_template, request, url_for, redirect, jsonify, make_response
 from flask_restful import Api
-from anirudhcrud.modela import People
+from usercrud.modela import Users
 
 # blueprint defaults https://flask.palletsprojects.com/en/2.0.x/api/#blueprint-objects
-app_cruda = Blueprint('anirudhcrud', __name__,
-                     url_prefix='/cruda',
-                     template_folder='templates/cruda/',
+app_crudu = Blueprint('userscrud', __name__,
+                     url_prefix='/userscrud',
+                     template_folder='templates/users/',
                      static_folder='static',
                      static_url_path='assets')
 
 # API generator https://flask-restful.readthedocs.io/en/latest/api.html#id1
-api = Api(app_cruda)
+api = Api(app_crudu)
 
 """ Application control for CRUD is main focus of this File, key features:
     1.) User table queries
@@ -23,26 +23,26 @@ api = Api(app_cruda)
 
 
 # User/Users extraction from SQL
-def people_all():
+def users_all():
     """converts Users table into JSON list """
-    return [peep.read() for peep in People.query.all()]
+    return [peep.read() for peep in Users.query.all()]
 
 
-def people_ilike(term):
+def users_ilike(term):
     """filter Users table by term into JSON list """
     term = "%{}%".format(term)  # "ilike" is case insensitive and requires wrapped  %term%
-    table = People.query.filter((People.studentName.ilike(term)) | (People.phoneNumber.ilike(term)) | (People.email.ilike(term)))
+    table = Users.query.filter((Users.name.ilike(term)) | (Users.grade.ilike(term)) | (Users.email.ilike(term))) | (Users.period.ilike(term))) | (Users.group.ilike(term))) | (Users.ghName.ilike(term))) | (Users.slName.ilike(term)))
     return [peep.read() for peep in table]
 
 
 # User extraction from SQL
-def people_by_id(sid):
+def users_by_id(sid):
     """finds User in table matching userid """
-    return People.query.filter_by(studentID=sid).first()
+    return Users.query.filter_by(studentID=sid).first()
 
 
 # User extraction from SQL
-def people_by_studentName(phoneNumber):
+def users_by_studentName(phoneNumber):
     """finds User in table matching phoneNumber """
     return People.query.filter_by(phoneNumber=phoneNumber).first()
 
@@ -51,18 +51,18 @@ def people_by_studentName(phoneNumber):
 
 
 # Default URL
-@app_cruda.route('/')
-def cruda():
+@app_crudu.route('/')
+def crudu():
     """obtains all Users from table and loads Admin Form"""
     return render_template("cruda.html", table=people_all())
 
 
 # CRUD create/add
-@app_cruda.route('/create/', methods=["POST"])
+@app_crudu.route('/create/', methods=["POST"])
 def create():
     """gets data from form and add it to Users table"""
     if request.form:
-        po = People(
+        po = Users(
             request.form.get("sid"),
             request.form.get("studentName"),
             request.form.get("phoneNumber"),
@@ -73,13 +73,13 @@ def create():
 
 
 # CRUD read
-@app_cruda.route('/read/', methods=["POST"])
+@app_crudu.route('/read/', methods=["POST"])
 def read():
     """gets userid from form and obtains corresponding data from Users table"""
     table = []
     if request.form:
         sid = request.form.get("sid")
-        po = people_by_id(sid)
+        po = users_by_id(sid)
         if po is not None:
             table = [po.read()]  # placed in list for easier/consistent use within HTML
     return render_template("cruda.html", table=table)
@@ -93,7 +93,7 @@ def update():
         sid = request.form.get("sid")
         studentName = request.form.get("studentName")
         phoneNumber = request.form.get("phoneNumber")
-        po = people_by_id(sid)
+        po = users_by_id(sid)
         if po is not None:
             po.update(studentName)
             po.update(phoneNumber)
@@ -101,24 +101,24 @@ def update():
 
 
 # CRUD delete
-@app_cruda.route('/delete/', methods=["POST"])
+@app_crudu.route('/delete/', methods=["POST"])
 def delete():
     """gets userid from form delete corresponding record from Users table"""
     if request.form:
         sid = request.form.get("sid")
-        po = people_by_id(sid)
+        po = users_by_id(sid)
         if po is not None:
             po.delete()
-    return redirect(url_for('anirudhcrud.cruda'))
+    return redirect(url_for('userscrud.crudu'))
 
 
 # Search request and response
-@app_cruda.route('/search/term/', methods=["POST"])
+@app_crudu.route('/search/term/', methods=["POST"])
 def search_term():
     """ obtain term/search request """
     req = request.get_json()
     term = req['term']
-    response = make_response(jsonify(people_ilike(term)), 200)
+    response = make_response(jsonify(users_ilike(term)), 200)
     return response
 
 

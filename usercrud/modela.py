@@ -1,5 +1,5 @@
 from sqlalchemy.exc import IntegrityError
-from __init__ import db
+from main import db
 
 # Tutorial: https://www.sqlalchemy.org/library.html#tutorials, try to get into Python shell and follow along
 # Define variable to define type of database (sqlite), and name and location of myDB.db
@@ -11,28 +11,27 @@ from __init__ import db
 # -- b.) Users represents data we want to store, something that is built on db.Model
 # -- c.) SQLAlchemy ORM is layer on top of SQLAlchemy Core, then SQLAlchemy engine, SQL
 
-class People(db.Model):
+class Users(db.Model):
     # define the Users schema
-    studentID = db.Column(db.Integer, primary_key=True)
-    studentName = db.Column(db.String(255), unique=False, nullable=False)
-    phoneNumber = db.Column(db.String(255), unique=True, nullable=False)
-    email = db.Column(db.String(255), unique=False, nullable=False)
 
-# userID = db.Column(db.Integer, primary_key=True)
-# name = db.Column(db.String(255), unique=False, nullable=False)
-# grade = db.Column(db.String(255), unique=True, nullable=False)
-# email = db.Column(db.String(255), unique=True, nullable=False)
-# period = db.Column(db.String(255), unique=True, nullable=False)
-# group = db.Column(db.String(255), unique=True, nullable=False)
-# ghName = db.Column(db.String(255), unique=True, nullable=False)
-# slName = db.Column(db.String(255), unique=True, nullable=False)
+    userID = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), unique=False, nullable=False)
+    grade = db.Column(db.String(255), unique=True, nullable=False)
+    email = db.Column(db.String(255), unique=True, nullable=False)
+    period = db.Column(db.String(255), unique=True, nullable=False)
+    group = db.Column(db.String(255), unique=True, nullable=False)
+    ghName = db.Column(db.String(255), unique=True, nullable=False)
+    slName = db.Column(db.String(255), unique=True, nullable=False)
 
     # constructor of a User object, initializes of instance variables within object
-    def __init__(self, sid, studentName, phoneNumber, email):
-        self.studentID = sid
-        self.studentName = studentName
-        self.phoneNumber = phoneNumber
+    def __init__(self, name, grade, email, period, group, ghName, slName):
+        self.name = name
+        self.grade = grade
         self.email = email
+        self.period = period
+        self.group = group
+        self.ghName = ghName
+        self.slName = slName
 
     # CRUD create/add a new record to the table
     # returns self or None on error
@@ -50,22 +49,33 @@ class People(db.Model):
     # returns dictionary
     def read(self):
         return {
-            "sid": self.studentID,
-            "studentName": self.studentName,
-            "phoneNumber": self.phoneNumber,
+            "name": self.name,
+            "grade": self.grade,
             "email": self.email,
+            "period": self.period,
+            "group": self.group,
+            "ghName": self.ghName,
+            "slName": self.slName,
         }
 
     # CRUD update: updates users name, password, phone
     # returns self
-    def update(self, studentName, phoneNumber="", email=""):
+    def update(self, name="", grade="", email="", period="", group="", ghName="", slName=""):
         """only updates values with length"""
-        if len(studentName) > 0:
-            self.studentName = studentName
-        if len(phoneNumber) > 0:
-            self.phoneNumber = phoneNumber
+        if len(name) > 0:
+            self.name = name
+        if len(grade) > 0:
+            self.grade = grade
         if len(email) > 0:
             self.email = email
+        if len(period) > 0:
+            self.period = period
+        if len(group) > 0:
+            self.group = group
+        if len(ghName) > 0:
+            self.ghName = ghName
+        if len(slName) > 0:
+            self.slName = slName
         db.session.commit()
         return self
 
@@ -137,30 +147,30 @@ class People(db.Model):
 """Database Creation and Testing section"""
 
 
-def people_model_tester():
+def users_model_tester():
     print("--------------------------")
-    print("Seed Data for Table: People")
+    print("Seed Data for Table: Users")
     print("--------------------------")
     db.create_all()
     """Tester data for table"""
-    s1 = People(sid='1', studentName='Math', phoneNumber='sadf', email='sfd')
-    s2 = People(sid='2', studentName='CS', phoneNumber='g', email='qtr')
-    s3 = People(sid='3', studentName='Bio', phoneNumber='h', email='zcv')
-    table = [s1, s2, s3]
+    s1 = Users(userID='1', name='Sahil', grade='11', email='sahillamarjacksonjr205@gmail.com', period='4', group='NastyLegacy', ghName='AD1616', slName='Sahil Samar')
+    # s2 = Users(sid='2', studentName='CS', phoneNumber='g', email='qtr')
+    # s3 = Users(sid='3', studentName='Bio', phoneNumber='h', email='zcv')
+    table = [s1]
     for row in table:
         try:
             db.session.add(row)
             db.session.commit()
         except IntegrityError:
             db.session.remove()
-            print(f"Records exist, duplicate studentName, or error: {row.studentName}")
+            print(f"Records exist, duplicate name, or error: {row.name}")
 
 
-def people_model_printer():
+def users_model_printer():
     print("------------")
     print("Table: users with SQL query")
     print("------------")
-    result = db.session.execute('select * from people')
+    result = db.session.execute('select * from users')
     print(result.keys())
     for row in result:
         print(row)
@@ -171,14 +181,14 @@ def model_printer():
     print("------------")
     print("Table: users with SQL query")
     print("------------")
-    result = db.session.execute('select * from people')
+    result = db.session.execute('select * from users')
     print(result.keys())
     for row in result:
         print(row)
 
 
 if __name__ == "__main__":
-    people_model_tester()  # builds model of People
-    people_model_printer()
+    users_model_tester()  # builds model of Users
+    users_model_printer()
     # model_tester()  # builds model of Users
     model_printer()
