@@ -72,7 +72,7 @@ def create():
             request.form.get("slName"),
         )
         po.create()
-    return redirect(url_for('.crudu'))
+    return redirect(url_for('usercrud.crudu'))
 
 
 # CRUD read
@@ -81,11 +81,11 @@ def read():
     """gets userid from form and obtains corresponding data from Users table"""
     table = []
     if request.form:
-        sid = request.form.get("sid")
-        po = users_by_id(sid)
+        userID = request.form.get("userID")
+        po = users_by_id(userID)
         if po is not None:
             table = [po.read()]  # placed in list for easier/consistent use within HTML
-    return render_template("cruda.html", table=table)
+    return render_template("crudu.html", table=table)
 
 
 # CRUD update
@@ -93,14 +93,22 @@ def read():
 def update():
     """gets userid and name from form and filters and then data in  Users table"""
     if request.form:
-        sid = request.form.get("sid")
-        studentName = request.form.get("studentName")
-        phoneNumber = request.form.get("phoneNumber")
-        po = users_by_id(sid)
+        userID = request.form.get("userID")
+        grade = request.form.get("grade")
+        email = request.form.get("email")
+        period = request.form.get("period")
+        group = request.form.get("group")
+        ghName = request.form.get("ghName")
+        slName = request.form.get("slName")
+        po = users_by_id(userID)
         if po is not None:
-            po.update(studentName)
-            po.update(phoneNumber)
-    return redirect(url_for('usercrud.cruda'))
+            po.update(grade)
+            po.update(email)
+            po.update(period)
+            po.update(group)
+            po.update(ghName)
+            po.update(slName)
+    return redirect(url_for('usercrud.crudu'))
 
 
 # CRUD delete
