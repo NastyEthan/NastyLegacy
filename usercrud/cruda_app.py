@@ -3,8 +3,8 @@ from flask_restful import Api
 from usercrud.modela import Users
 
 # blueprint defaults https://flask.palletsprojects.com/en/2.0.x/api/#blueprint-objects
-app_crudu = Blueprint('userscrud', __name__,
-                     url_prefix='/userscrud',
+app_crudu = Blueprint('usercrud', __name__,
+                     url_prefix='/usercrud',
                      template_folder='templates/users/',
                      static_folder='static',
                      static_url_path='assets')
@@ -36,15 +36,15 @@ def users_ilike(term):
 
 
 # User extraction from SQL
-def users_by_id(sid):
+def users_by_id(name):
     """finds User in table matching userid """
-    return Users.query.filter_by(studentID=sid).first()
+    return Users.query.filter_by(name=name).first()
 
 
 # User extraction from SQL
-def users_by_studentName(phoneNumber):
+def users_by_grade(grade):
     """finds User in table matching phoneNumber """
-    return People.query.filter_by(phoneNumber=phoneNumber).first()
+    return Users.query.filter_by(grade=grade).first()
 
 
 """ app route section """
@@ -54,7 +54,7 @@ def users_by_studentName(phoneNumber):
 @app_crudu.route('/')
 def crudu():
     """obtains all Users from table and loads Admin Form"""
-    return render_template("cruda.html", table=people_all())
+    return render_template("crudu.html", table=users_all())
 
 
 # CRUD create/add
@@ -63,13 +63,16 @@ def create():
     """gets data from form and add it to Users table"""
     if request.form:
         po = Users(
-            request.form.get("sid"),
-            request.form.get("studentName"),
-            request.form.get("phoneNumber"),
-            request.form.get("email")
+            request.form.get("name"),
+            request.form.get("grade"),
+            request.form.get("email"),
+            request.form.get("period"),
+            request.form.get("group"),
+            request.form.get("ghName"),
+            request.form.get("slName"),
         )
         po.create()
-    return redirect(url_for('anirudhcrud.cruda'))
+    return redirect(url_for('.crudu'))
 
 
 # CRUD read
@@ -86,7 +89,7 @@ def read():
 
 
 # CRUD update
-@app_cruda.route('/update/', methods=["POST"])
+@app_crudu.route('/update/', methods=["POST"])
 def update():
     """gets userid and name from form and filters and then data in  Users table"""
     if request.form:
@@ -97,7 +100,7 @@ def update():
         if po is not None:
             po.update(studentName)
             po.update(phoneNumber)
-    return redirect(url_for('anirudhcrud.cruda'))
+    return redirect(url_for('usercrud.cruda'))
 
 
 # CRUD delete
@@ -105,11 +108,11 @@ def update():
 def delete():
     """gets userid from form delete corresponding record from Users table"""
     if request.form:
-        sid = request.form.get("sid")
-        po = users_by_id(sid)
+        userID = request.form.get("userID")
+        po = users_by_id(userID)
         if po is not None:
             po.delete()
-    return redirect(url_for('userscrud.crudu'))
+    return redirect(url_for('usercrud.crudu'))
 
 
 # Search request and response
