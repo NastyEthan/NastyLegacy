@@ -154,8 +154,6 @@ def users_model_tester():
     db.create_all()
     """Tester data for table"""
     s1 = Users(userID='1', name='Sahil', grade='11', email='sahillamarjacksonjr205@gmail.com', period='4', group='NastyLegacy', ghName='AD1616', slName='Sahil Samar')
-    # s2 = Users(sid='2', studentName='CS', phoneNumber='g', email='qtr')
-    # s3 = Users(sid='3', studentName='Bio', phoneNumber='h', email='zcv')
     table = [s1]
     for row in table:
         try:
