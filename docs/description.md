@@ -7,3 +7,7 @@ We are building a student database for computer science classes. This will be a 
 # Licensing 
 
 Our project uses the MIT license. Our project is geared towards being open source, and there is no need for us to have patents. We want our sponsor, Mr. M, to be able to use the software for free; it is unlikely to be used elsewhere. We also want him to be able to use the software and easily make any derivative changes as he sees fit. 
+
+# Hosting
+
+Our project will be hosted on AWS. 
