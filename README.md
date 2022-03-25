@@ -55,26 +55,7 @@ Our sponsor is Mr. Mortensen. We will be designing this database for his use in 
 
 ## Week 2
 
-### Week # Progress
 
-| Progress | Evidence |
-| - | - |
-| N/A | N/A |
-
-### Week # Grading
-
-| Name | Grade | Work | Evidence |
-| - | - | - | - |
-| Ellen Xu | | | |
-| Ethan Vo | | | |
-| Michael Chen | | | |
-| Sahil Samar | | | |
-| Anirudh Ramachandran | | | |
-
-
-| Grade | Requirement | Evidence |
-| - | - | - |
-| /# | | | |
 ## Week 3
 
 ## Week 4
