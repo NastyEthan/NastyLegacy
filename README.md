@@ -63,6 +63,8 @@ Our sponsor is Mr. Mortensen. We will be designing this database for his use in 
 
 [Site actions](https://nastylegacy.github.io/NastyLegacy/docs/siteActions)
 
+[Updated info from meeting](https://nastylegacy.github.io/NastyLegacy/docs/req)
+
 ## Week 3
 
 ## Week 4
