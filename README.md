@@ -55,6 +55,13 @@ Our sponsor is Mr. Mortensen. We will be designing this database for his use in 
 
 ## Week 2
 
+[Link to review ticket for this week](https://github.com/NastyLegacy/NastyLegacy/issues/21)
+
+[Added licensing and hosting info here](https://github.com/NastyLegacy/NastyLegacy/issues/21)
+
+[Some ideas regarding PII](https://nastylegacy.github.io/NastyLegacy/docs/ideas)
+
+[Site actions](https://nastylegacy.github.io/NastyLegacy/docs/siteActions)
 
 ## Week 3
 
