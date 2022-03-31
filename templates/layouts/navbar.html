@@ -17,6 +17,7 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="nav-link" href={{ url_for('usercrud.crudu') }}>User Crud</a>
+                    <a class="nav-link" href={{ url_for('usercrud.search') }}>Search</a>
                 </div>
             </li>
         </div>
@@ -63,62 +64,59 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
 </div>
 
 <script>
-    {#function nav_search() {#}
-    {#    // fetch standard requires data set to a name-value pair#}
-    {#    const term = document.getElementById("term");#}
-    {#    const body = {#}
-    {#        term: term.value#}
-    {#    };#}
-    {##}
-    {#    // fetch call with header options#}
-    {#    fetch('/crud/search/term/', {#}
-    {#        method: "POST",#}
-    {#        credentials: "include",#}
-    {#        body: JSON.stringify(body),#}
-    {#        cache: "no-cache",#}
-    {#        headers: new Headers({#}
-    {#            "content-type": "application/json"#}
-    {#        })#}
-    {#    })#}
-    {#        // async then replies with response header#}
-    {#        .then(function (response) {#}
-    {#            // prepare HTML search result container for new output#}
-    {#            const resultContainer1 = document.getElementById("resultName");#}
-    {#            const resultContainer2 = document.getElementById("resultTeacher");#}
-    {#            const resultContainer3 = document.getElementById("resultLink");#}
-    {#            // clean up from previous search#}
-    {#            while (resultContainer1.firstChild) {#}
-    {#                resultContainer1.removeChild(resultContainer1.firstChild);#}
-    {#            }#}
-    {#            while (resultContainer2.firstChild) {#}
-    {#                resultContainer2.removeChild(resultContainer2.firstChild);#}
-    {#            }#}
-    {#            while (resultContainer3.firstChild) {#}
-    {#                resultContainer3.removeChild(resultContainer3.firstChild);#}
-    {#            }#}
-    {#            // response contains valid result#}
-    {#            response.json().then(function(data) {#}
-    {#                // loop through JSON and build HTML output#}
-    {#                for (let i = 0; i < data.length; i++) {#}
-    {#                    console.log(data)#}
-    {#                    const td = document.createElement("td");#}
-    {#                    td.innerHTML = data[i].className;#}
-    {#                    resultContainer1.appendChild(td);#}
-    {#                }#}
-    {#                for (let i = 0; i < data.length; i++) {#}
-    {#                    const td = document.createElement("td");#}
-    {#                    td.innerHTML = data[i].teacher;#}
-    {#                    resultContainer2.appendChild(td);#}
-    {#                }#}
-    {#                for (let i = 0; i < data.length; i++) {#}
-    {#                    const td = document.createElement("td");#}
-    {#                    td.innerHTML = data[i].link;#}
-    {#                    resultContainer3.appendChild(td);#}
-    {#                }#}
-    {#            })#}
-    {#        })#}
-    {#}#}
+    // {#function nav_search() {#}
+    // {#    // fetch standard requires data set to a name-value pair#}
+    // {#    const term = document.getElementById("term");#}
+    // {#    const body = {#}
+    // {#        term: term.value#}
+    // {#    };#}
+    // {##}
+    // {#    // fetch call with header options#}
+    // {#    fetch('/crud/search/term/', {#}
+    // {#        method: "POST",#}
+    // {#        credentials: "include",#}
+    // {#        body: JSON.stringify(body),#}
+    // {#        cache: "no-cache",#}
+    // {#        headers: new Headers({#}
+    // {#            "content-type": "application/json"#}
+    // {#        })#}
+    // {#    })#}
+    // {#        // async then replies with response header#}
+    // {#        .then(function (response) {#}
+    // {#            // prepare HTML search result container for new output#}
+    // {#            const resultContainer1 = document.getElementById("resultName");#}
+    // {#            const resultContainer2 = document.getElementById("resultTeacher");#}
+    // {#            const resultContainer3 = document.getElementById("resultLink");#}
+    // {#            // clean up from previous search#}
+    // {#            while (resultContainer1.firstChild) {#}
+    // {#                resultContainer1.removeChild(resultContainer1.firstChild);#}
+    // {#            }#}
+    // {#            while (resultContainer2.firstChild) {#}
+    // {#                resultContainer2.removeChild(resultContainer2.firstChild);#}
+    // {#            }#}
+    // {#            while (resultContainer3.firstChild) {#}
+    // {#                resultContainer3.removeChild(resultContainer3.firstChild);#}
+    // {#            }#}
+    // {#            // response contains valid result#}
+    // {#            response.json().then(function(data) {#}
+    // {#                // loop through JSON and build HTML output#}
+    // {#                for (let i = 0; i < data.length; i++) {#}
+    // {#                    console.log(data)#}
+    // {#                    const td = document.createElement("td");#}
+    // {#                    td.innerHTML = data[i].className;#}
+    // {#                    resultContainer1.appendChild(td);#}
+    // {#                }#}
+    // {#                for (let i = 0; i < data.length; i++) {#}
+    // {#                    const td = document.createElement("td");#}
+    // {#                    td.innerHTML = data[i].teacher;#}
+    // {#                    resultContainer2.appendChild(td);#}
+    // {#                }#}
+    // {#                for (let i = 0; i < data.length; i++) {#}
+    // {#                    const td = document.createElement("td");#}
+    // {#                    td.innerHTML = data[i].link;#}
+    // {#                    resultContainer3.appendChild(td);#}
+    // {#                }#}
+    // {#            })#}
+    // {#        })#}
+    // {#}#}
 </script>
-
-
-

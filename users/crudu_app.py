@@ -47,6 +47,11 @@ def crudu():
     """obtains all Users from table and loads Admin Form"""
     return render_template("crudu.html", table=users_all())
 
+@app_crudu.route('/search', methods=['GET', 'POST'])
+def search():
+    """obtains all Users from table and loads Admin Form"""
+    return render_template("search.html", table=users_all())
+
 
 # CRUD create/add
 @app_crudu.route('/create/', methods=["POST"])
@@ -115,9 +120,3 @@ def delete():
         if po is not None:
             po.delete()
     return redirect(url_for('usercrud.crudu'))
-
-
-
-
-
-
