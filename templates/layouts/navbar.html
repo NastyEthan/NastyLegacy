@@ -27,7 +27,7 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
             <input type="text" class="form-control" id="term" placeholder="enter search term">
         </div>
         <div>
-            <button class="btn btn-primary bg-secondary" data-bs-toggle="offcanvas" data-bs-target="#searchBar" >Search</button>
+            <button class="btn btn-primary bg-secondary" data-bs-toggle="offcanvas" data-bs-target="#searchBar" onclick="nav_search();">Search</button>
         </div>
     </div>
 
@@ -39,22 +39,22 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
 
 <div class="offcanvas offcanvas-end bg-white text-dark" tabindex="-1" id="searchBar" aria-labelledby="offcanvasEndLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasEndLabel">Classes You May be Looking For</h5>
+        <h5 class="offcanvas-title" id="offcanvasEndLabel">Person You May be Looking For</h5>
     </div>
     <div class="offcanvas-body small">
         <div class="container">
             <table class="table">
                 <tr>
-                    <th>Class Name</th>
+                    <th>Name </th>
                     <td id="resultName"> </td>
                 </tr>
                 <tr>
-                    <th>Teacher </th>
-                    <td id="resultTeacher"> </td>
+                    <th>Group </th>
+                    <td id="resultGroup"> </td>
                 </tr>
                 <tr>
-                    <th>Link </th>
-                    <td id="resultLink"> </td>
+                    <th> Grade </th>
+                    <td id="resultGrade"> </td>
                 </tr>
             </table>
         </div>
@@ -63,61 +63,61 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
 </div>
 
 <script>
-    {#function nav_search() {#}
-    {#    // fetch standard requires data set to a name-value pair#}
-    {#    const term = document.getElementById("term");#}
-    {#    const body = {#}
-    {#        term: term.value#}
-    {#    };#}
-    {##}
-    {#    // fetch call with header options#}
-    {#    fetch('/crud/search/term/', {#}
-    {#        method: "POST",#}
-    {#        credentials: "include",#}
-    {#        body: JSON.stringify(body),#}
-    {#        cache: "no-cache",#}
-    {#        headers: new Headers({#}
-    {#            "content-type": "application/json"#}
-    {#        })#}
-    {#    })#}
-    {#        // async then replies with response header#}
-    {#        .then(function (response) {#}
-    {#            // prepare HTML search result container for new output#}
-    {#            const resultContainer1 = document.getElementById("resultName");#}
-    {#            const resultContainer2 = document.getElementById("resultTeacher");#}
-    {#            const resultContainer3 = document.getElementById("resultLink");#}
-    {#            // clean up from previous search#}
-    {#            while (resultContainer1.firstChild) {#}
-    {#                resultContainer1.removeChild(resultContainer1.firstChild);#}
-    {#            }#}
-    {#            while (resultContainer2.firstChild) {#}
-    {#                resultContainer2.removeChild(resultContainer2.firstChild);#}
-    {#            }#}
-    {#            while (resultContainer3.firstChild) {#}
-    {#                resultContainer3.removeChild(resultContainer3.firstChild);#}
-    {#            }#}
-    {#            // response contains valid result#}
-    {#            response.json().then(function(data) {#}
-    {#                // loop through JSON and build HTML output#}
-    {#                for (let i = 0; i < data.length; i++) {#}
-    {#                    console.log(data)#}
-    {#                    const td = document.createElement("td");#}
-    {#                    td.innerHTML = data[i].className;#}
-    {#                    resultContainer1.appendChild(td);#}
-    {#                }#}
-    {#                for (let i = 0; i < data.length; i++) {#}
-    {#                    const td = document.createElement("td");#}
-    {#                    td.innerHTML = data[i].teacher;#}
-    {#                    resultContainer2.appendChild(td);#}
-    {#                }#}
-    {#                for (let i = 0; i < data.length; i++) {#}
-    {#                    const td = document.createElement("td");#}
-    {#                    td.innerHTML = data[i].link;#}
-    {#                    resultContainer3.appendChild(td);#}
-    {#                }#}
-    {#            })#}
-    {#        })#}
-    {#}#}
+    function nav_search() {
+        // fetch standard requires data set to a name-value pair
+        const term = document.getElementById("term");
+        const body = {
+            term: term.value
+        };
+
+        // fetch call with header options
+        fetch('/usercrud/search/term/', {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify(body),
+            cache: "no-cache",
+            headers: new Headers({
+                "content-type": "application/json"
+            })
+        })
+            // async then replies with response header
+            .then(function (response) {
+                // prepare HTML search result container for new output
+                const resultContainer1 = document.getElementById("resultName");
+                const resultContainer2 = document.getElementById("resultGroup");
+                const resultContainer3 = document.getElementById("resultGrade");
+                // clean up from previous search
+                while (resultContainer1.firstChild) {
+                    resultContainer1.removeChild(resultContainer1.firstChild);
+                }
+                while (resultContainer2.firstChild) {
+                    resultContainer2.removeChild(resultContainer2.firstChild);
+                }
+                while (resultContainer3.firstChild) {
+                    resultContainer3.removeChild(resultContainer3.firstChild);
+                }
+                // response contains valid result
+                response.json().then(function(data) {
+                    // loop through JSON and build HTML output
+                    for (let i = 0; i < data.length; i++) {
+                        console.log(data)
+                        const td = document.createElement("td");
+                        td.innerHTML = data[i].name;
+                        resultContainer1.appendChild(td);
+                    }
+                    for (let i = 0; i < data.length; i++) {
+                        const td = document.createElement("td");
+                        td.innerHTML = data[i].group;
+                        resultContainer2.appendChild(td);
+                    }
+                    for (let i = 0; i < data.length; i++) {
+                        const td = document.createElement("td");
+                        td.innerHTML = data[i].grade;
+                        resultContainer3.appendChild(td);
+                    }
+                })
+            })
+    }
 </script>
 
 
