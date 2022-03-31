@@ -11,6 +11,14 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
             <li class="navbar-nav">
                 <a class="nav-link" href={{ url_for('nasty') }}>Nasty</a>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role = "button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Databases
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="nav-link" href={{ url_for('usercrud.crudu') }}>User Crud</a>
+                </div>
+            </li>
         </div>
     </div>
 

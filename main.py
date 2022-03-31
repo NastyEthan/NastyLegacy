@@ -1,17 +1,14 @@
 from flask import render_template, Flask # flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
+import requests
 
-app = Flask(__name__)
+from users.crudu_app import app_crudu
+from users.userapi import api_bp
+from __init__ import app
 
-dbURI = 'sqlite:///model/myDB.db'
-# Setup properties for the database
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = dbURI
-app.config['SECRET_KEY'] = 'SECRET_KEY'
-# Create SQLAlchemy engine to support SQLite dialect (sqlite:)
-db = SQLAlchemy(app)
-Migrate(app, db)
+
+app.register_blueprint(app_crudu)
+app.register_blueprint(api_bp)
+
 
 
 # connects default URL to render index.html
@@ -23,6 +20,18 @@ def index():
 @app.route('/nasty/')
 def nasty():
     return render_template("nasty.html")
+
+
+
+@app.route('/userapi/', methods=['GET', 'POST'])
+def userapi():
+    url = "http://127.0.0.1:5000/usercrud/questions/"
+    response = requests.request("GET", url)
+    questions = response.json()
+    questionList = []
+    for question in questions:
+        questionList.append(question)
+    return render_template("userapi.html", questions=questions, questionList=questionList)
 
 
 if __name__ == "__main__":
