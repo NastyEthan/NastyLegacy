@@ -50,5 +50,14 @@ def logout():
   session['logged_in'] = False
   return home()
 
+def loginTester():
+  try:
+    login()
+  except:
+    print("Something went wrong")
+
+loginTester()
+
 if __name__ == "__main__":
   app.run(debug=False)
+
