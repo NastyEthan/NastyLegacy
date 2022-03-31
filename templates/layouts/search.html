@@ -1,0 +1,200 @@
+<!-- Navigation Bar from bootstrap
+This HTML is setup as a fragment allowing it to be "included" by other HTML files via Jinja2
+-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="https://github.com/NastyEthan/NastyAwakened">&nbsp;&nbsp;{{basename}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav mr-auto">
+            <li class="navbar-nav">
+                <a class="nav-link" href={{ url_for('nasty') }}>Nasty</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role = "button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Databases
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="nav-link" href={{ url_for('crud.search') }}>SQL Search</a>
+                    <a class="nav-link" href={{ url_for('crud.crud') }}> Database Subjects </a>
+                    <a class="nav-link" href={{ url_for('usercrud.crud') }}> Database Users </a>
+                    <a class="nav-link" href={{ url_for('quizcrud.crudQuiz') }}> Database Quiz </a>
+                    <a class="nav-link" href={{ url_for('usercrud.account') }}> Account Page </a>
+                    <a class="nav-link" href={{ url_for('usercrud.login') }}> Login Page </a>
+                    <a class="nav-link" href={{ url_for('crud.crud') }}>SQL Crud </a>
+                    <a class="nav-link" href={{ url_for('crudassign.assign') }}>Assignments</a>
+                    <a class="nav-link" href={{ url_for('anirudhcrud.cruda') }}>CRUD for CS Class </a>
+                </div>
+            </li>
+            <li class="navbar-nav">
+                <a class="nav-link" href={{ url_for('calendar') }}>Calendar</a>
+            </li>
+            <li class="navbar-nav">
+                <a class="nav-link" href={{ url_for('classboard') }}>Classboard</a>
+            </li>
+            <li class="navbar-nav">
+                <a class="nav-link" href={{ url_for('grades_index') }}>Grades</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Classes
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                    <a class="dropdown-item" href={{ url_for('physics') }}>Physics</a>
+                    <a class="dropdown-item" href={{ url_for('CS') }}>CS</a>
+                    <a class="dropdown-item" href={{ url_for('math') }}>Math</a>
+                    <a class="dropdown-item" href={{ url_for('flashcards') }}>Flashcards</a>
+                    <a class="dropdown-item" href={{ url_for('Quiz') }}>Quiz</a>
+                    <a class="dropdown-item" href={{ url_for('quizcrud.quizDB') }}> Quiz Page </a>
+                    <a class="dropdown-item" href={{ url_for('stopwatch') }}>Stopwatch</a>
+                    <a class="dropdown-item" href={{ url_for('books') }}>Books</a>
+                    <a class="dropdown-item" href={{ url_for('crud.Enroll') }}>Enroll in a Class</a>
+                    <a class="dropdown-item" href={{ url_for('quizcrud.quizDB') }}> Quiz Page </a>
+                    <a class="dropdown-item" href={{ url_for('flappybird') }}> Flappy Bird </a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    About Page
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                    <a class="dropdown-item" href="/ethan/">Ethan</a>
+                    <a class="dropdown-item" href="/anirudh/">Anirudh</a>
+                    <a class="dropdown-item" href="/michael/">Michael</a>
+                    <a class="dropdown-item" href="/sahil/">Sahil</a>
+                    <a class="dropdown-item" href="/byron/">Byron</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    MiniProjects
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                    {#                    <a class="dropdown-item" href="/game/">Dinosaur Game (In Progress)</a>#}
+                    <a class="dropdown-item" href="/aecreatetask/">Ethan and Anirudh's Create a Task</a>
+                </div>
+            </li>
+            </ul>
+        </div>
+        <div class="btn-group">
+            <div class="form-check form-switch">
+                <input type="checkbox" onclick="darkFunction()" class="form-check-input" id="darkSwitch">
+                <label style='color: dimgray;' class="custom-control-label" for="darkSwitch">Dark Mode</label>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <div class = "float-right">
+                <input type="text" class="form-control" id="term" placeholder="enter search term">
+            </div>
+            <div>
+                <button class="btn btn-primary bg-secondary" data-bs-toggle="offcanvas" data-bs-target="#searchBar" onclick="nav_search();">Search</button>
+            </div>
+        </div>
+        {% block navbar_script %}
+            <!-- Navigation bar JavaScript support -->
+            <script src={{  url_for("static", filename="javascript/navbar.js", version='140') }}></script>
+        {% endblock %}
+</nav>
+
+<div class="offcanvas offcanvas-end bg-white text-dark" tabindex="-1" id="searchBar" aria-labelledby="offcanvasEndLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasEndLabel">Classes You May be Looking For</h5>
+    </div>
+    <div class="offcanvas-body small">
+        <div class="container">
+            <table class="table">
+                <tr>
+                    <th>Class Name</th>
+                    <td id="resultName"> </td>
+                </tr>
+                <tr>
+                    <th>Teacher </th>
+                    <td id="resultTeacher"> </td>
+                </tr>
+                <tr>
+                    <th>Link </th>
+                    <td id="resultLink"> </td>
+                </tr>
+            </table>
+        </div>
+        <div style="padding-top: 550px; font-size: small">
+            <span id="clock"></span>
+        </div>
+    </div>
+</div>
+</div>
+
+<head>
+    <title>Custom Search-Bar</title>
+    <!-- <style>
+        body {
+            color: #000080;
+        }
+        /* no */
+    </style> -->
+</head>
+<body>
+<script async src=
+        "https://cse.google.com/cse.js?cx=c21bd57b6d071bed6">
+</script>
+<div class="gcse-search"></div>
+</body>
+
+<script>
+    function nav_search() {
+        // fetch standard requires data set to a name-value pair
+        const term = document.getElementById("term");
+        const body = {
+            term: term.value
+        };
+
+        // fetch call with header options
+        fetch('/crud/search/term/', {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify(body),
+            cache: "no-cache",
+            headers: new Headers({
+                "content-type": "application/json"
+            })
+        })
+            // async then replies with response header
+            .then(function (response) {
+                // prepare HTML search result container for new output
+                const resultContainer1 = document.getElementById("resultName");
+                const resultContainer2 = document.getElementById("resultTeacher");
+                const resultContainer3 = document.getElementById("resultLink");
+                // clean up from previous search
+                while (resultContainer1.firstChild) {
+                    resultContainer1.removeChild(resultContainer1.firstChild);
+                }
+                while (resultContainer2.firstChild) {
+                    resultContainer2.removeChild(resultContainer2.firstChild);
+                }
+                while (resultContainer3.firstChild) {
+                    resultContainer3.removeChild(resultContainer3.firstChild);
+                }
+                // response contains valid result
+                response.json().then(function(data) {
+                    // loop through JSON and build HTML output
+                    for (let i = 0; i < data.length; i++) {
+                        console.log(data)
+                        const td = document.createElement("td");
+                        td.innerHTML = data[i].className;
+                        resultContainer1.appendChild(td);
+                    }
+                    for (let i = 0; i < data.length; i++) {
+                        const td = document.createElement("td");
+                        td.innerHTML = data[i].teacher;
+                        resultContainer2.appendChild(td);
+                    }
+                    for (let i = 0; i < data.length; i++) {
+                        const td = document.createElement("td");
+                        td.innerHTML = data[i].link;
+                        resultContainer3.appendChild(td);
+                    }
+                })
+            })
+    }
+</script>
