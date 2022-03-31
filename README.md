@@ -55,26 +55,16 @@ Our sponsor is Mr. Mortensen. We will be designing this database for his use in 
 
 ## Week 2
 
-### Week # Progress
+[Link to review ticket for this week](https://github.com/NastyLegacy/NastyLegacy/issues/21)
 
-| Progress | Evidence |
-| - | - |
-| N/A | N/A |
+[Added licensing and hosting info here](https://github.com/NastyLegacy/NastyLegacy/issues/21)
 
-### Week # Grading
+[Some ideas regarding PII](https://nastylegacy.github.io/NastyLegacy/docs/ideas)
 
-| Name | Grade | Work | Evidence |
-| - | - | - | - |
-| Ellen Xu | | | |
-| Ethan Vo | | | |
-| Michael Chen | | | |
-| Sahil Samar | | | |
-| Anirudh Ramachandran | | | |
+[Site actions](https://nastylegacy.github.io/NastyLegacy/docs/siteActions)
 
+[Updated info from meeting](https://nastylegacy.github.io/NastyLegacy/docs/req)
 
-| Grade | Requirement | Evidence |
-| - | - | - |
-| /# | | | |
 ## Week 3
 
 ## Week 4

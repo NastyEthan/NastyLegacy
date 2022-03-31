@@ -1,5 +1,11 @@
 from sqlalchemy.exc import IntegrityError
 from main import db
+from flask import Flask
+from flask_restful import Resource, Api, reqparse
+import pandas as pd
+import ast
+app = Flask(__name__)
+api = Api(app)
 
 # Tutorial: https://www.sqlalchemy.org/library.html#tutorials, try to get into Python shell and follow along
 # Define variable to define type of database (sqlite), and name and location of myDB.db
@@ -173,8 +179,6 @@ def users_model_printer():
     for row in result:
         print(row)
 
-
-
 def model_printer():
     print("------------")
     print("Table: users with SQL query")
@@ -184,6 +188,7 @@ def model_printer():
     for row in result:
         print(row)
 
+api.add_resource(Users, '/users')  # '/users' is our entry point
 
 if __name__ == "__main__":
     users_model_tester()  # builds model of Users
