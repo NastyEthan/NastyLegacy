@@ -1,0 +1,35 @@
+{% extends "layouts/base.html" %}
+{% set project = "Rice Questions" %}
+{% block body %}
+    <body style = "background-color: lightgrey;">
+    <span style="color: black; ">
+    <div class="center-block" style="margin: 2% 5% 5%; font-family: gilroy,serif; font-size: 12px;">
+        <div class="col-12" style="text-align: center;">
+            <p class="setup" style="font-size: 15px;"><strong>All Questions</strong></p>
+        </div>
+
+        <div class="offset-sm-4 text-align: center">
+            <div class="col-md">
+                {% for question in questions %}
+                    <p class="setup"><strong>{{question.id}}. {{question.question}}</strong></p>
+                    <div class="offset-sm-1 col-md">
+                        <p class="setup"><strong>A. {{question.answer1}}</strong></p>
+                        <p class="setup"><strong>B. {{question.answer2}}</strong></p>
+                        <p class="setup"><strong>C. {{question.answer3}}</strong></p>
+                        <p class="setup"><strong>D. {{question.answer4}}</strong></p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+    <table style="margin: 2%">
+        <tr>
+            <th>JSON Data</th>
+        </tr>
+        <tr>
+            <td>{{questions}}</td>
+        </tr>
+    </table>
+</span>
+{% endblock %}
