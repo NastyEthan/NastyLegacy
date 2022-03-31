@@ -41,6 +41,7 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Name</th>
                                 <th>Grade</th>
                                 <th>Email</th>
                                 <th>Period</th>
@@ -54,6 +55,7 @@
                             {% for row in table %}
                                 <tr>
                                     <td>{{ row['userID'] }}</td>
+                                    <td>{{ row['name'] }}</td>
                                     <td>{{ row['grade'] }}</td>
                                     <td>{{ row['email'] }}</td>
                                     <td>{{ row['period'] }}</td>
@@ -78,7 +80,7 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th><label for="userID">ID</label></th>
+                            <th><label for="name">Name</label></th>
                             <th><label for="grade">Grade</label></th>
                             <th><label for="email">Email</label></th>
                             <th><label for="period">Period</label></th>
@@ -89,13 +91,14 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td><input type="text" name="userID" id="userID" required></td>
-                            <td><input type="Number" name="grade" id="grade" required></td>
-                            <td><input type="Email" name="email" id="email" required></td>
-                            <td><input type="Number" name="period" id="period" required></td>
+                            <td><input type="text" name="name" id="name" required></td>
+                            <td><input type="number" name="grade" id="grade" required></td>
+                            <td><input type="email" name="email" id="email" required></td>
+                            <td><input type="number" name="period" id="period" required></td>
                             <td><input type="text" name="group" id="group" required></td>
                             <td><input type="text" name="ghName" id="ghName" required></td>
                             <td><input type="text" name="slName" id="slName" required></td>
+                            <td><input type="submit" value="Create"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -140,6 +143,7 @@
                             <table id="update_table">
                                 <tr>
                                     <th><label for="update_userID">ID</label></th>
+                                    <th><label for="update_name">Name</label></th>
                                     <th><label for="update_grade">Grade</label></th>
                                     <th><label for="update_email">Email</label></th>
                                     <th><label for="update_period">Period</label></th>
@@ -157,7 +161,7 @@
                                             </optgroup>
                                         </select>
                                     </td>
-                                    <td><input type="Number" name="grade" id="update_grade" required></td>
+                                    <td><input type="text" name="name" id="update_name" required></td>
                                     <td><input type="submit" value="Update"></td>
                                 </tr>
                             </table>
