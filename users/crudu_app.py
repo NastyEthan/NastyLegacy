@@ -50,7 +50,15 @@ def crudu():
 @app_crudu.route('/search', methods=['GET', 'POST'])
 def search():
     """obtains all Users from table and loads Admin Form"""
-    return render_template("search.html", table=users_all())
+    return render_template("search.html")
+
+@app_crudu.route('/search/term/', methods=["POST"])
+def search_term():
+    """ obtain term/search request """
+    req = request.get_json()
+    term = req['term']
+    response = make_response(jsonify(users_all()), 200)
+    return response
 
 
 # CRUD create/add
