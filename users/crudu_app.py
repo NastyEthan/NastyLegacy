@@ -67,6 +67,8 @@ def search_term():
     return response
 
 
+
+
 # CRUD create/add
 @app_crudu.route('/create/', methods=["POST"])
 def create():
