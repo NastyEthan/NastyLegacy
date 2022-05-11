@@ -17,6 +17,7 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="nav-link" href={{ url_for('usercrud.crudu') }}>User Crud</a>
+                    <a class="nav-link" href={{ url_for('usercrud.crudAdmin') }}>Admin Crud</a>
                     <a class="nav-link" href={{ url_for('usercrud.search') }}>Search</a>
                 </div>
             </li>
@@ -78,11 +79,13 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
             body: JSON.stringify(body),
             cache: "no-cache",
             headers: new Headers({
-                "content-type": "application/json"
+                "content-type": "application/json",
+                'Accept': 'application/json'
             })
         })
             // async then replies with response header
             .then(function (response) {
+                console.log(response);
                 // prepare HTML search result container for new output
                 const resultContainer1 = document.getElementById("resultName");
                 const resultContainer2 = document.getElementById("resultGroup");
