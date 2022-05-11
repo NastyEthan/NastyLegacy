@@ -1,15 +1,8 @@
 from sqlalchemy.exc import IntegrityError
 from __init__ import db
+# from __init__ import admin
 
-# Tutorial: https://www.sqlalchemy.org/library.html#tutorials, try to get into Python shell and follow along
-# Define variable to define type of database (sqlite), and name and location of myDB.db
-
-
-# Define the Users table within the model
-# -- Object Relational Mapping (ORM) is the key concept of SQLAlchemy
-# -- a.) db.Model is like an inner layer of the onion in ORM
-# -- b.) Users represents data we want to store, something that is built on db.Model
-# -- c.) SQLAlchemy ORM is layer on top of SQLAlchemy Core, then SQLAlchemy engine, SQL
+# from flask_admin.contrib.sqla import ModelView
 
 class Users(db.Model):
     # define the Users schema
@@ -42,9 +35,7 @@ class Users(db.Model):
             db.session.add(self)  # add prepares to persist person object to Users table
             db.session.commit()  # SqlAlchemy "unit of work pattern" requires a manual commit
             return self
-            print("are we here")
         except IntegrityError:
-            print("or here")
             db.session.remove()
             return None
 
@@ -110,7 +101,6 @@ def users_model_tester():
             db.session.add(row)
             db.session.commit()
         except IntegrityError:
-            print("hm")
             db.session.remove()
 
 def users_model_printer():
@@ -127,3 +117,5 @@ def users_model_printer():
 if __name__ == "__main__":
     users_model_tester()  # builds model of Users
     users_model_printer()
+
+# admin.add_view(ModelView(Users, db.session))

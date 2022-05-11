@@ -2,12 +2,10 @@ from flask import render_template, Flask # flask
 import requests
 
 from users.crudu_app import app_crudu
-from users.userapi import api_bp
 from __init__ import app
 
 
 app.register_blueprint(app_crudu)
-app.register_blueprint(api_bp)
 
 
 
