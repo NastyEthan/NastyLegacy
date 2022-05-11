@@ -3,7 +3,7 @@ from flask_restful import Api
 from users.model import Users
 
 # blueprint defaults https://flask.palletsprojects.com/en/2.0.x/api/#blueprint-objects
-from users.query import login, authorize
+from users.query import login #, authorize
 
 app_crudu = Blueprint('usercrud', __name__,
                      url_prefix='/usercrud',
@@ -46,9 +46,10 @@ def users_by_name(name):
 def crud_login():
     # obtains form inputs and fulfills login requirements
     if request.form:
-        password = request.form.get("password")
-        email = request.form.get("email")
-        if login(email, password):       # zero index [0] used as email is a tuple
+        classcode = request.form.get("classcode")
+        # password = request.form.get("password")
+        # email = request.form.get("email")
+        if login(classcode):       # zero index [0] used as email is a tuple
             return redirect(url_for('crud.crud'))
 
     # if not logged in, show the login page
