@@ -21,18 +21,5 @@ def index():
 def nasty():
     return render_template("nasty.html")
 
-
-
-@app.route('/userapi/', methods=['GET', 'POST'])
-def userapi():
-    url = "http://127.0.0.1:5000/usercrud/questions/"
-    response = requests.request("GET", url)
-    questions = response.json()
-    questionList = []
-    for question in questions:
-        questionList.append(question)
-    return render_template("userapi.html", questions=questions, questionList=questionList)
-
-
 if __name__ == "__main__":
     app.run(debug=True)
