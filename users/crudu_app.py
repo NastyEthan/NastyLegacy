@@ -47,6 +47,11 @@ def crudu():
     """obtains all Users from table and loads Admin Form"""
     return render_template("crudu.html", table=users_all())
 
+@app_crudu.route('/admin')
+def crudAdmin():
+    """obtains all Users from table and loads Admin Form"""
+    return render_template("crudAdmin.html", table=users_all())
+
 def find(term):
     """filter Users table by term into JSON list """
     term = "%{}%".format(term)  # "ilike" is case insensitive and requires wrapped  %term%
@@ -63,7 +68,7 @@ def search_term():
     """ obtain term/search request """
     req = request.get_json()
     term = req['term']
-    response = make_response(find(term), 200)
+    response = make_response(jsonify(users_ilike(term)), 200)
     return response
 
 
