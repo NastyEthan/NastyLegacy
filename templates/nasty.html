@@ -9,81 +9,94 @@
 
 {% block body %}
     <style>
-        .grid-container {
-            display: grid;
-            grid-template-rows: 200px 50px;
-            grid-template-columns: auto auto auto auto auto;
-            grid-gap: 10px;
-            padding: 10px;
-        }
-        .column {
-        float: left;
-        width: 50%;
-        text-align: center;
-    }
-        .grid-container > div {
-            text-align: center;
-            padding: 10px;
-            font-size: 30px;
-        }
-
         h1 {
             font-family: "Bebas Neue";
             text-align: center;
-            font-size:80px;
+            font-size:100px;
         }
         h2 {
             font-family: "Bebas Neue";
             text-align: center;
-            font-size:69px
+            font-size:30px
         }
         html, body {
-            background-color: #5B3B8C;
+            background-color: #727ffc;
         }
         p {
             font-family: "Raleway"
         }
-        a.btn {
-            width: 30%; 
-        }
-        .btn:link,
-        .btn:visited {
-            text-transform: uppercase;
+        .button {
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
             text-decoration: none;
             display: inline-block;
-            border-radius: 100px;
-            transition: all .2s;
-            color: lightpink;
-            font-size: 20px;
-            font-weight: 900;
+            font-size: 40px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2);
+        .button1 {
+            background-color: white;
+            color: black;
+            border: 2px solid #65a87e;
         }
 
-        .btn:active {
-            transform: translateY(-1px);
-            box-shadow: 0 5px 10px rgba(255, 255, 255, 0.2);
+        .button1:hover {
+            background-color: #65a87e;
+            color: white;
         }
 
-        a.name {
-            font-family: Raleway;
-            font-size: 20px;
+        .button2 {
+            background-color: white;
+            color: black;
+            border: 2px solid #91ffba;
         }
 
-        body.dark-mode {
-            background-color: #35363a;
+        .button2:hover {
+            background-color: #91ffba;
+            color: white;
         }
-        html.dark-mode {
-            background-color: #35363a;
+
+        .button3 {
+            background-color: white;
+            color: black;
+            border: 2px solid #b8beff;
         }
+
+        .button3:hover {
+            background-color: #b8beff;
+            color: white;
+        }
+
     </style>
     <br>
-    <h1>Nasty Legacy</h1>
+    <h1>Del Norte CS Students Page</h1>
     <br>
+    <div class="text-center">
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col">
+                    <h2> The CSP Nighthawk Coding Society Page </h2>
+                    <button class="button button1"><a  style = "text-decoration:none;" href="https://csp.nighthawkcodingsociety.com/">CSP</a></button>
+                </div>
 
+                <div class="col">
+                    <h2> The CSA Nighthawk Coding Society Page </h2>
+                    <button class="button button2"><a  style = "text-decoration:none;" href="https://csa.nighthawkcodingsociety.com/">CSA</a></button>
+                </div>
+
+            </div>
+            <div class="row">
+                <br>
+                <br>
+                <br>
+                <button class="button button3"><a  style = "text-decoration:none;" href={{ url_for('usercrud.crudu') }}>Detailed student information</a></button>
+            </div>
+        </div>
+    </div>
 
 
 
