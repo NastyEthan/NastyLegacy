@@ -55,17 +55,17 @@ def crud_login():
     # if not logged in, show the login page
     return render_template("login.html")
 
-@app_crudu.route('/authorize/', methods=["GET", "POST"])
-def crud_authorize():
-    # check form inputs and creates user
-    if request.form:
-        # validation should be in HTML
-        classcode = request.form.get("classcode")
-        adminpass = request.form.get("adminpass")           # password should be verified
-        if authorize(classcode, adminpass):    # zero index [0] used as user_name and email are type tuple
-            return redirect(url_for('crud.crud_login'))
-    # show the auth user page if the above fails for some reason
-    return render_template("authorize.html")
+# @app_crudu.route('/authorize/', methods=["GET", "POST"])
+# def crud_authorize():
+#     # check form inputs and creates user
+#     if request.form:
+#         # validation should be in HTML
+#         classcode = request.form.get("classcode")
+#         adminpass = request.form.get("adminpass")           # password should be verified
+#         if authorize(classcode, adminpass):    # zero index [0] used as user_name and email are type tuple
+#             return redirect(url_for('crud.crud_login'))
+#     # show the auth user page if the above fails for some reason
+#     return render_template("authorize.html")
 
 # Default URL
 @app_crudu.route('/')
@@ -167,3 +167,4 @@ def delete():
         if po is not None:
             po.delete()
     return redirect(url_for('usercrud.crudu'))
+
