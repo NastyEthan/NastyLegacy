@@ -139,6 +139,7 @@ def login():
         if (adminpass == "jmort123"):
             user = Users.query.get(1)
             login_user(user)
+            return redirect("http://127.0.0.1:5000/admin/users") # where is the render template??? LMFAO
         else:
             print("no")
     return render_template("authorize.html")

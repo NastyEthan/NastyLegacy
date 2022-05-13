@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, url_for, redirect, jsonify, make_response
 from flask_restful import Api
 from users.model import Users
+import hashlib
 
 # blueprint defaults https://flask.palletsprojects.com/en/2.0.x/api/#blueprint-objects
 from users.query import login #, authorize
@@ -39,6 +40,9 @@ def users_by_name(name):
     """finds User in table matching phoneNumber """
     return Users.query.filter_by(name=name).first()
 
+def codeEncryption(code):
+    classcode = hashlib.sha512(code.encode()).hexdigest()
+
 
 """ app route section """
 # if login url, show phones table only
@@ -57,6 +61,7 @@ def crud_login():
 
     # if not logged in, show the login page
     return render_template("login.html")
+
 
 # @app_crudu.route('/authorize/', methods=["GET", "POST"])
 # def crud_authorize():
@@ -99,9 +104,6 @@ def search_term():
     term = req['term']
     response = make_response(jsonify(users_ilike(term)), 200)
     return response
-
-
-
 
 # CRUD create/add
 @app_crudu.route('/create/', methods=["POST"])
