@@ -63,6 +63,22 @@ def crud_login():
     return render_template("login.html")
 
 
+
+# @app_crudu.route('/changepass/', methods=['GET', 'POST'])
+# def crud_changepass():
+#     if request.form:
+#         oldcode = request.form.get("oldcode")
+#         newcode = request.form.get("newcode")
+#         classcode = request.form.get("classcode")
+#
+#
+#     if request.form.get("adminpass") == "jmort123":
+#             if oldcode == classcode:
+#                 classcode = newcode
+#
+#     return render_template("changepass.html")
+#
+
 # @app_crudu.route('/authorize/', methods=["GET", "POST"])
 # def crud_authorize():
 #     # check form inputs and creates user
