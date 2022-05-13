@@ -8,70 +8,6 @@
 {% endblock %}
 
 {% block body %}
-    <style>
-        h1 {
-            font-family: "Bebas Neue";
-            text-align: center;
-            font-size:100px;
-        }
-        h2 {
-            font-family: "Bebas Neue";
-            text-align: center;
-            font-size:30px
-        }
-        html, body {
-            background-color: #727ffc;
-        }
-        p {
-            font-family: "Raleway"
-        }
-        .button {
-            border: none;
-            color: white;
-            padding: 16px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 40px;
-            margin: 4px 2px;
-            transition-duration: 0.4s;
-            cursor: pointer;
-        }
-
-        .button1 {
-            background-color: white;
-            color: black;
-            border: 2px solid #65a87e;
-        }
-
-        .button1:hover {
-            background-color: #65a87e;
-            color: white;
-        }
-
-        .button2 {
-            background-color: white;
-            color: black;
-            border: 2px solid #91ffba;
-        }
-
-        .button2:hover {
-            background-color: #91ffba;
-            color: white;
-        }
-
-        .button3 {
-            background-color: white;
-            color: black;
-            border: 2px solid #b8beff;
-        }
-
-        .button3:hover {
-            background-color: #b8beff;
-            color: white;
-        }
-
-    </style>
     <br>
     <h1>Del Norte CS Students Page</h1>
     <br>
@@ -85,7 +21,7 @@
 
                 <div class="col">
                     <h2> The CSA Nighthawk Coding Society Page </h2>
-                    <button class="button button2"><a  style = "text-decoration:none;" href="https://csa.nighthawkcodingsociety.com/">CSA</a></button>
+                    <button class="button button1"><a  style = "text-decoration:none;" href="https://csa.nighthawkcodingsociety.com/">CSA</a></button>
                 </div>
 
             </div>
@@ -94,6 +30,7 @@
                 <br>
                 <br>
                 <button class="button button3"><a  style = "text-decoration:none;" href={{ url_for('usercrud.crudu') }}>Detailed student information</a></button>
+                <button class="button button3"><a  style = "text-decoration:none;" href="http://127.0.0.1:5000/admin/">Admin</a></button>
             </div>
         </div>
     </div>

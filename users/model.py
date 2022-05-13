@@ -133,7 +133,7 @@ class MyModelView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated
 
-@app.route('/adminlogin', methods=['GET', 'POST'])
+@app.route('/adminlogin/', methods=['GET', 'POST'])
 def login():
     if request.form:
         adminpass = request.form.get("adminpass")
@@ -146,10 +146,10 @@ def login():
 
 
 
-@app.route('/adminlogout')
+@app.route('/adminlogout/')
 def logout():
     logout_user()
-    return 'Logged Out!'
+    return render_template("nasty.html")
 
 
 admin.add_view(MyModelView(Users, db.session))
