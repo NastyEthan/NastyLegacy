@@ -1,5 +1,3 @@
-
-   
 <!DOCTYPE html>
 
 {% extends "layouts/base.html" %}
@@ -8,7 +6,7 @@
 
     <div class="container py-4">
         <header class="pb-3 mb-4 border-bottom border-primary text-dark">
-            <span class="fs-4">SQL CRUD Sign Up Page</span>
+            <span class="fs-4">Sign In Page</span>
         </header>
     </div>
 
@@ -16,16 +14,23 @@
 
         <div class="container bg-secondary py-4">
             <div class="p-5 mb-4 bg-light text-dark rounded-3">
-                <form method="POST" ID="authUser" action={{url_for('usercrud.crud_authorize')}} >
+                <form method="POST" ID="authUser" action={{url_for('usercrud.crud_login')}} >
                     <table>
                         <tr><th><label for="classcode">Class Code</label></th></tr>
-                        <tr><td><input type="password" id='classcode' name="classcode" size="20" required></td></tr>
-                        <tr><th><label for="adminpass">Administrator Code</label></th></tr>
-                        <tr><td><input type="password" id='adminpass' name="adminpass" size="20" required></td></tr>
+                        <tr><td><input type="password" id='classcode' name="classcode" size="20"></td></tr>
                         <tr><th><input type="submit" value="Submit"></th></tr>
-                        <tr><td><a href={{url_for('usercrud.crud_login')}}>Log In</a></td></tr>
                     </table>
                 </form>
+                <form method="POST" ID="authUser" action={{url_for('login')}} >
+                    <table>
+                        <tr><th><label for="adminpass">Administrator Login</label></th></tr>
+                        <tr><td><input type="password" id='adminpass' name="adminpass" size="20" required></td></tr>
+                        <tr><th><input type="submit" value="Submit"></th></tr>
+                    </table>
+                </form>
+
+                <!-- <button class="button"  style = "text-decoration:none;" href="http://127.0.0.1:5000/admin/">Go to Admin Page</a></button> -->
+
             </div>
         </div>
 

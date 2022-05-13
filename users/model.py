@@ -1,10 +1,11 @@
+from flask import render_template, request, url_for, redirect
 from sqlalchemy.exc import IntegrityError
-from __init__ import db
-# from __init__ import admin
+from __init__ import db, app
+from __init__ import admin, login
+from flask_login import current_user, login_user, logout_user, UserMixin
+from flask_admin.contrib.sqla import ModelView
 
-# from flask_admin.contrib.sqla import ModelView
-
-class Users(db.Model):
+class Users(db.Model, UserMixin):
     # define the Users schema
 
     userID = db.Column(db.Integer, primary_key=True)
@@ -81,6 +82,9 @@ class Users(db.Model):
         db.session.commit()
         return None
 
+    def get_id(self):
+        return (self.userID)
+
 
 
 
@@ -118,4 +122,35 @@ if __name__ == "__main__":
     users_model_tester()  # builds model of Users
     users_model_printer()
 
-# admin.add_view(ModelView(Users, db.session))
+
+@login.user_loader
+def load_user(userID):
+    return Users.query.get(userID)
+
+
+class MyModelView(ModelView):
+    def is_accessible(self):
+        return current_user.is_authenticated
+
+@app.route('/adminlogin/', methods=['GET', 'POST'])
+def login():
+    if request.form:
+        adminpass = request.form.get("adminpass")
+        if (adminpass == "jmort123"):
+            user = Users.query.get(1)
+            login_user(user)
+            return redirect("http://127.0.0.1:5000/admin/users") # where is the render template??? LMFAO
+        else:
+            print("no")
+    return render_template("authorize.html")
+
+
+
+@app.route('/adminlogout/')
+def logout():
+    logout_user()
+    return render_template("nasty.html")
+
+
+admin.add_view(MyModelView(Users, db.session))
+

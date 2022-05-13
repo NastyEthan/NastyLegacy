@@ -9,7 +9,7 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav mr-auto">
             <li class="navbar-nav">
-                <a class="nav-link" href={{ url_for('nasty') }}>Nasty</a>
+                <a class="nav-link" href={{ url_for('nasty') }}>Home</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role = "button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -26,11 +26,16 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <div class = "float-right">
-            <input type="text" class="form-control" id="term" placeholder="enter search term">
+            <input type="text" class="form-control" id="term" placeholder="enter student name...">
         </div>
         <div>
             <button class="btn btn-primary bg-secondary" data-bs-toggle="offcanvas" data-bs-target="#searchBar" onclick="nav_search();">Search</button>
         </div>
+    </div>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <a class="nav-link" href="http://127.0.0.1:5000/adminlogin/">Login</a>
+        <a class="nav-link" href="http://127.0.0.1:5000/adminlogout/">Logout</a>
     </div>
 
     {% block navbar_script %}
