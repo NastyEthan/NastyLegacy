@@ -45,12 +45,15 @@ def users_by_name(name):
 @app_crudu.route('/login/', methods=["GET", "POST"])
 def crud_login():
     # obtains form inputs and fulfills login requirements
+    classcode = "bingbong"
     if request.form:
-        classcode = request.form.get("classcode")
+        if classcode == request.form.get("classcode"):
+            return redirect(url_for('usercrud.crudu'))
+        else:
+            return redirect(url_for('usercrud.crud_login'))
         # password = request.form.get("password")
         # email = request.form.get("email")
-        if login(classcode):       # zero index [0] used as email is a tuple
-            return redirect(url_for('crud.crud'))
+        # if login(classcode):       # zero index [0] used as email is a tuple
 
     # if not logged in, show the login page
     return render_template("login.html")
