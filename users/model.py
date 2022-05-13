@@ -5,7 +5,6 @@ from __init__ import admin, login
 from flask_login import current_user, login_user, logout_user, UserMixin
 from flask_admin.contrib.sqla import ModelView
 
-
 class Users(db.Model, UserMixin):
     # define the Users schema
 
