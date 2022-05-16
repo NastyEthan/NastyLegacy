@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, url_for, redirect, jsonify, make_response
+from flask_login import login_required, login_manager
 from flask_restful import Api
 from users.model import Users
 import hashlib
@@ -91,8 +92,13 @@ def crud_login():
 #     # show the auth user page if the above fails for some reason
 #     return render_template("authorize.html")
 
+@login_manager.unauthorized_handler
+def unauthorized_callback():
+    return redirect('/adminlogin/')
+
 # Default URL
 @app_crudu.route('/')
+@login_required # login_url="/adminlogin/"
 def crudu():
     """obtains all Users from table and loads Admin Form"""
     return render_template("crudu.html", table=users_all())
@@ -188,4 +194,3 @@ def delete():
         if po is not None:
             po.delete()
     return redirect(url_for('usercrud.crudu'))
-
