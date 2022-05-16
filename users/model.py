@@ -138,7 +138,7 @@ def login():
     if request.form:
         adminpass = request.form.get("adminpass")
         if (adminpass == "jmort123"):
-            user = Users.query.get(1)
+            user = Users.query.filter(Users.name == "Admin").first()
             login_user(user)
             return redirect("http://127.0.0.1:5000/admin/users") # where is the render template??? LMFAO
         else:
@@ -180,4 +180,3 @@ def logout():
 
 
 admin.add_view(MyModelView(Users, db.session))
-
