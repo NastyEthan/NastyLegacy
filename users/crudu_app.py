@@ -1,8 +1,11 @@
 from flask import Blueprint, render_template, request, url_for, redirect, jsonify, make_response
 from flask_restful import Api
 from users.model import Users
+import hashlib
 
 # blueprint defaults https://flask.palletsprojects.com/en/2.0.x/api/#blueprint-objects
+from users.query import login #, authorize
+
 app_crudu = Blueprint('usercrud', __name__,
                      url_prefix='/usercrud',
                      template_folder='templates/pages/',
@@ -37,15 +40,67 @@ def users_by_name(name):
     """finds User in table matching phoneNumber """
     return Users.query.filter_by(name=name).first()
 
+def codeEncryption(code):
+    classcode = hashlib.sha512(code.encode()).hexdigest()
+
 
 """ app route section """
+# if login url, show phones table only
+@app_crudu.route('/login/', methods=["GET", "POST"])
+def crud_login():
+    # obtains form inputs and fulfills login requirements
+    classcode = "bingbong"
+    if request.form:
+        if classcode == request.form.get("classcode"):
+            return redirect(url_for('usercrud.crudu'))
+        else:
+            return redirect(url_for('usercrud.crud_login'))
+        # password = request.form.get("password")
+        # email = request.form.get("email")
+        # if login(classcode):       # zero index [0] used as email is a tuple
 
+    # if not logged in, show the login page
+    return render_template("login.html")
+
+
+
+# @app_crudu.route('/changepass/', methods=['GET', 'POST'])
+# def crud_changepass():
+#     if request.form:
+#         oldcode = request.form.get("oldcode")
+#         newcode = request.form.get("newcode")
+#         classcode = request.form.get("classcode")
+#
+#
+#     if request.form.get("adminpass") == "jmort123":
+#             if oldcode == classcode:
+#                 classcode = newcode
+#
+#     return render_template("changepass.html")
+#
+
+# @app_crudu.route('/authorize/', methods=["GET", "POST"])
+# def crud_authorize():
+#     # check form inputs and creates user
+#     if request.form:
+#         # validation should be in HTML
+#         classcode = request.form.get("classcode")
+#         adminpass = request.form.get("adminpass")           # password should be verified
+#         if authorize(classcode, adminpass):    # zero index [0] used as user_name and email are type tuple
+#             return redirect(url_for('crud.crud_login'))
+#     # show the auth user page if the above fails for some reason
+#     return render_template("authorize.html")
 
 # Default URL
 @app_crudu.route('/')
 def crudu():
     """obtains all Users from table and loads Admin Form"""
     return render_template("crudu.html", table=users_all())
+
+@app_crudu.route('/admin')
+def crudAdmin():
+    """obtains all Users from table and loads Admin Form"""
+    return render_template("crudAdmin.html", table=users_all())
 
 def find(term):
     """filter Users table by term into JSON list """
@@ -63,11 +118,8 @@ def search_term():
     """ obtain term/search request """
     req = request.get_json()
     term = req['term']
-    response = make_response(find(term), 200)
+    response = make_response(jsonify(users_ilike(term)), 200)
     return response
-
-
-
 
 # CRUD create/add
 @app_crudu.route('/create/', methods=["POST"])
@@ -136,3 +188,4 @@ def delete():
         if po is not None:
             po.delete()
     return redirect(url_for('usercrud.crudu'))
+

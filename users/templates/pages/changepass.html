@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+    <div class="container py-4">
+        <header class="pb-3 mb-4 border-bottom border-primary text-dark">
+            <span class="fs-4">CS Class Code Change</span>
+        </header>
+    </div>
+
+    <div class="container py-4 text-light bg-success">
+
+        <div class="container bg-secondary py-4">
+            <div class="p-5 mb-4 bg-light text-dark rounded-3">
+                <form method="POST" ID="login" action={{url_for('usercrud.crud_')}}>
+                    <table>
+                        <tr><th><label for="password">Admin Password</label></th></tr>
+                        <tr><td><input type="password" id="adminpass" name="Admin Password" size="20" required></td></tr>
+                        <tr><th><label for="password"> Old Class Code</label></th></tr>
+                        <tr><td><input type="password" id="oldcode" name="oldcode" size="20" required></td></tr>
+                        <tr><th><label for="password"> New Class Code</label></th></tr>
+                        <tr><td><input type="password" id="newcode" name="newcode" size="20" required></td></tr>
+                        <tr><th><input type="submit" value="Submit"></th></tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+{#    <script>#}
+{#        function changepassjs(){#}
+{#            var adminpass = document.getElementById("adminpass").value;#}
+{#            var cclasscode = document.getElementById("oldcode").value;#}
+{#            var nclasscode = document.getElementById("newcode").value;#}
+{#            if (adminpass === 'jmort123') {#}
+{#                alert('yo mom')#}
+{#                var cclasscode = nclasscode#}
+{#                var classcode = cclasscode#}
+{#                return classcode#}
+{#                console.log(classcode)#}
+{#            }#}
+{#        }#}
+{##}
+{##}
+{##}
+{#    </script>#}
+
+{% endblock %}

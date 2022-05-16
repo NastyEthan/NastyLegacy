@@ -1,17 +1,12 @@
+from flask import render_template, request, url_for, redirect
 from sqlalchemy.exc import IntegrityError
-from __init__ import db
+from __init__ import db, app
+from __init__ import admin, login
+from flask_login import current_user, login_user, logout_user, UserMixin
+from flask_admin.contrib.sqla import ModelView
 
-# Tutorial: https://www.sqlalchemy.org/library.html#tutorials, try to get into Python shell and follow along
-# Define variable to define type of database (sqlite), and name and location of myDB.db
 
-
-# Define the Users table within the model
-# -- Object Relational Mapping (ORM) is the key concept of SQLAlchemy
-# -- a.) db.Model is like an inner layer of the onion in ORM
-# -- b.) Users represents data we want to store, something that is built on db.Model
-# -- c.) SQLAlchemy ORM is layer on top of SQLAlchemy Core, then SQLAlchemy engine, SQL
-
-class Users(db.Model):
+class Users(db.Model, UserMixin):
     # define the Users schema
 
     userID = db.Column(db.Integer, primary_key=True)
@@ -42,9 +37,7 @@ class Users(db.Model):
             db.session.add(self)  # add prepares to persist person object to Users table
             db.session.commit()  # SqlAlchemy "unit of work pattern" requires a manual commit
             return self
-            print("are we here")
         except IntegrityError:
-            print("or here")
             db.session.remove()
             return None
 
@@ -90,6 +83,9 @@ class Users(db.Model):
         db.session.commit()
         return None
 
+    def get_id(self):
+        return (self.userID)
+
 
 
 
@@ -110,7 +106,6 @@ def users_model_tester():
             db.session.add(row)
             db.session.commit()
         except IntegrityError:
-            print("hm")
             db.session.remove()
 
 def users_model_printer():
@@ -127,3 +122,62 @@ def users_model_printer():
 if __name__ == "__main__":
     users_model_tester()  # builds model of Users
     users_model_printer()
+
+
+@login.user_loader
+def load_user(userID):
+    return Users.query.get(userID)
+
+
+class MyModelView(ModelView):
+    def is_accessible(self):
+        return current_user.is_authenticated
+
+@app.route('/adminlogin/', methods=['GET', 'POST'])
+def login():
+    if request.form:
+        adminpass = request.form.get("adminpass")
+        if (adminpass == "jmort123"):
+            user = Users.query.get(1)
+            login_user(user)
+            return redirect("http://127.0.0.1:5000/admin/users") # where is the render template??? LMFAO
+        else:
+            print("no")
+    return render_template("authorize.html")
+
+# def changepass():
+#     if request.form:
+#         adminpass = request.form.get("adminpass")
+#         old_password = request.form.get("classcode")
+#         new_password = request.form.get("nclasscode")
+#         if (adminpass == "jmort123"):
+#             # old_password == new_password
+#             print("Yes")
+#             return redirect("http://127.0.0.1:5000/login")
+#         else:
+#             print("no")
+#             return redirect("http://127.0.0.1:5000/changepass")
+#     return render_template("changepass.html")
+
+
+
+    # user = request.user
+    # old_password = request.POST['classcode']
+    # new_password1 = request.POST['nclasscode']
+    # new_password2 = request.POST['nclasscode']
+    # if user.check_password(old_password):
+    #     if new_password1 == new_password2:
+    #         user.set_password(new_password1)
+    #     return redirect("http://127.0.0.1:5000/login")
+    # else:
+    #     return redirect("http://127.0.0.1:5000/changepass")
+
+
+@app.route('/adminlogout/')
+def logout():
+    logout_user()
+    return render_template("nasty.html")
+
+
+admin.add_view(MyModelView(Users, db.session))
+

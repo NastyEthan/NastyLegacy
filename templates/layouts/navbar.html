@@ -9,7 +9,7 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav mr-auto">
             <li class="navbar-nav">
-                <a class="nav-link" href={{ url_for('nasty') }}>Nasty</a>
+                <a class="nav-link" href={{ url_for('nasty') }}>Home</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role = "button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -25,11 +25,20 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <div class = "float-right">
-            <input type="text" class="form-control" id="term" placeholder="enter search term">
+            <input type="text" class="form-control" id="term" placeholder="enter student name...">
         </div>
         <div>
             <button class="btn btn-primary bg-secondary" data-bs-toggle="offcanvas" data-bs-target="#searchBar" onclick="nav_search();">Search</button>
         </div>
+    </div>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <a class="nav-link" href="http://127.0.0.1:5000/adminlogin/">Login</a>
+        <a class="nav-link" href="http://127.0.0.1:5000/adminlogout/">Logout</a>
+    </div>
+
+    <div>
+        <h1> {{ current_user.name }} </h1>
     </div>
 
     {% block navbar_script %}
@@ -57,6 +66,22 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
                     <th> Grade </th>
                     <td id="resultGrade"> </td>
                 </tr>
+                <tr>
+                    <th> Period </th>
+                    <td id="resultPeriod"> </td>
+                </tr>
+                <tr>
+                    <th> Email </th>
+                    <td id="resultEmail"> </td>
+                </tr>
+                <tr>
+                    <th> Github Username </th>
+                    <td id="resultGithub"> </td>
+                </tr>
+                <tr>
+                    <th> Slack Username </th>
+                    <td id="resultSlack"> </td>
+                </tr>
             </table>
         </div>
     </div>
@@ -78,7 +103,8 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
             body: JSON.stringify(body),
             cache: "no-cache",
             headers: new Headers({
-                "content-type": "application/json"
+                "content-type": "application/json",
+                'Accept': 'application/json'
             })
         })
             // async then replies with response header
@@ -87,6 +113,10 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
                 const resultContainer1 = document.getElementById("resultName");
                 const resultContainer2 = document.getElementById("resultGroup");
                 const resultContainer3 = document.getElementById("resultGrade");
+                const resultContainer4 = document.getElementById("resultPeriod");
+                const resultContainer5 = document.getElementById("resultEmail");
+                const resultContainer6 = document.getElementById("resultGithub");
+                const resultContainer7 = document.getElementById("resultSlack");
                 // clean up from previous search
                 while (resultContainer1.firstChild) {
                     resultContainer1.removeChild(resultContainer1.firstChild);
@@ -96,6 +126,18 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
                 }
                 while (resultContainer3.firstChild) {
                     resultContainer3.removeChild(resultContainer3.firstChild);
+                }
+                while (resultContainer4.firstChild) {
+                    resultContainer4.removeChild(resultContainer4.firstChild);
+                }
+                while (resultContainer5.firstChild) {
+                    resultContainer5.removeChild(resultContainer5.firstChild);
+                }
+                while (resultContainer6.firstChild) {
+                    resultContainer6.removeChild(resultContainer6.firstChild);
+                }
+                while (resultContainer7.firstChild) {
+                    resultContainer7.removeChild(resultContainer7.firstChild);
                 }
                 // response contains valid result
                 response.json().then(function(data) {
@@ -115,6 +157,26 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
                         const td = document.createElement("td");
                         td.innerHTML = data[i].grade;
                         resultContainer3.appendChild(td);
+                    }
+                    for (let i = 0; i < data.length; i++) {
+                        const td = document.createElement("td");
+                        td.innerHTML = data[i].period;
+                        resultContainer4.appendChild(td);
+                    }
+                    for (let i = 0; i < data.length; i++) {
+                        const td = document.createElement("td");
+                        td.innerHTML = data[i].email;
+                        resultContainer5.appendChild(td);
+                    }
+                    for (let i = 0; i < data.length; i++) {
+                        const td = document.createElement("td");
+                        td.innerHTML = data[i].ghName;
+                        resultContainer6.appendChild(td);
+                    }
+                    for (let i = 0; i < data.length; i++) {
+                        const td = document.createElement("td");
+                        td.innerHTML = data[i].slName;
+                        resultContainer7.appendChild(td);
                     }
                 })
             })

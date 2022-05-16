@@ -8,82 +8,35 @@
 {% endblock %}
 
 {% block body %}
-    <style>
-        .grid-container {
-            display: grid;
-            grid-template-rows: 200px 50px;
-            grid-template-columns: auto auto auto auto auto;
-            grid-gap: 10px;
-            padding: 10px;
-        }
-        .column {
-        float: left;
-        width: 50%;
-        text-align: center;
-    }
-        .grid-container > div {
-            text-align: center;
-            padding: 10px;
-            font-size: 30px;
-        }
+<style>
 
-        h1 {
-            font-family: "Bebas Neue";
-            text-align: center;
-            font-size:80px;
-        }
-        h2 {
-            font-family: "Bebas Neue";
-            text-align: center;
-            font-size:69px
-        }
-        html, body {
-            background-color: #5B3B8C;
-        }
-        p {
-            font-family: "Raleway"
-        }
-        a.btn {
-            width: 30%; 
-        }
-        .btn:link,
-        .btn:visited {
-            text-transform: uppercase;
-            text-decoration: none;
-            display: inline-block;
-            border-radius: 100px;
-            transition: all .2s;
-            color: lightpink;
-            font-size: 20px;
-            font-weight: 900;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2);
-        }
-
-        .btn:active {
-            transform: translateY(-1px);
-            box-shadow: 0 5px 10px rgba(255, 255, 255, 0.2);
-        }
-
-        a.name {
-            font-family: Raleway;
-            font-size: 20px;
-        }
-
-        body.dark-mode {
-            background-color: #35363a;
-        }
-        html.dark-mode {
-            background-color: #35363a;
-        }
-    </style>
+</style>
     <br>
-    <h1>Nasty Legacy</h1>
+    <h1>Del Norte CS Students Page</h1>
     <br>
+    <div class="text-center">
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col">
+                    <h2> The CSP Nighthawk Coding Society Page </h2>
+                    <button class="button button1"><a  style = "text-decoration:none;" href="https://csp.nighthawkcodingsociety.com/">CSP</a></button>
+                </div>
 
+                <div class="col">
+                    <h2> The CSA Nighthawk Coding Society Page </h2>
+                    <button class="button button1"><a  style = "text-decoration:none;" href="https://csa.nighthawkcodingsociety.com/">CSA</a></button>
+                </div>
+
+            </div>
+            <div class="row">
+                <br>
+                <br>
+                <br>
+                <button class="button1"><a  style = "text-decoration:none;" href={{ url_for('usercrud.crudu') }}>Detailed student information</a></button>
+                <button class="button1"><a  style = "text-decoration:none;" href="http://127.0.0.1:5000/admin/">Admin</a></button>
+            </div>
+        </div>
+    </div>
 
 
 
