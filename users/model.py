@@ -145,6 +145,32 @@ def login():
             print("no")
     return render_template("authorize.html")
 
+# def changepass():
+#     if request.form:
+#         adminpass = request.form.get("adminpass")
+#         old_password = request.form.get("classcode")
+#         new_password = request.form.get("nclasscode")
+#         if (adminpass == "jmort123"):
+#             # old_password == new_password
+#             print("Yes")
+#             return redirect("http://127.0.0.1:5000/login")
+#         else:
+#             print("no")
+#             return redirect("http://127.0.0.1:5000/changepass")
+#     return render_template("changepass.html")
+
+
+
+    # user = request.user
+    # old_password = request.POST['classcode']
+    # new_password1 = request.POST['nclasscode']
+    # new_password2 = request.POST['nclasscode']
+    # if user.check_password(old_password):
+    #     if new_password1 == new_password2:
+    #         user.set_password(new_password1)
+    #     return redirect("http://127.0.0.1:5000/login")
+    # else:
+    #     return redirect("http://127.0.0.1:5000/changepass")
 
 
 @app.route('/adminlogout/')
