@@ -134,9 +134,9 @@ def create():
             request.form.get("group"),
             request.form.get("ghName"),
             request.form.get("slName"),
+            request.form.get("saveKey"),
         )
         po.create()
-        print("It is working")
     return redirect(url_for('usercrud.crudu'))
 
 
@@ -166,6 +166,7 @@ def update():
         group = request.form.get("group")
         ghName = request.form.get("ghName")
         slName = request.form.get("slName")
+        saveKey = request.form.get("saveKey")
         po = users_by_id(userID)
         if po is not None:
             po.update(name)
@@ -175,6 +176,7 @@ def update():
             po.update(group)
             po.update(ghName)
             po.update(slName)
+            po.update(saveKey)
     return redirect(url_for('usercrud.crudu'))
 
 
