@@ -126,7 +126,58 @@
 
         </div>
 
+        <div class="container py-4">
+            <div class="p-5 mb-4 bg-light text-dark rounded-3">
+                <h2>Update</h2>
+                <form method="POST" ID="update" action={{url_for('usercrud.update')}} >
+                    <table id="update_table">
+                        <tr>
+                            <td>
+                                <select name="userID" id="userID">
+                                    <optgroup label="userID">
+                                        {% for row in table %}
+                                            <option label="{{ row['userID'] }}">{{ row['userID'] }}</option>
+                                        {% endfor %}
+                                    </optgroup>
+                                </select>
+                            </td>
+                        </tr>
+                        <thead>
+                        <tr>
+                            <th><label for="name">Name</label></th>
+                            <th><label for="update_grade">Grade</label></th>
+                            <th><label for="update_email">Email</label></th>
+                            <th><label for="update_period">Period</label></th>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><input type="text" name="name" id="name" required></td>
+                            <td><input type="text" name="grade" id="grade" required></td>
+                            <td><input type="text" name="email" id="email" required></td>
+                            <td><input type="text" name="period" id="period" required></td>
+                        </tbody>
+                        <thead>
+                        <tr>
+                            <th><label for="group">Group</label></th>
+                            <th><label for="ghName">Github Name</label></th>
+                            <th><label for="slName">Slack Name</label></th>
+                            <th><label for="saveKey">Save Key</label></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><input type="text" name="group" id=group" required></td>
+                            <td><input type="text" name="ghName" id="ghName" required></td>
+                            <td><input type="text" name="slName" id=slName" required></td>
+                            <td><input type="text" name="saveKey" id="saveKey" required></td>
+                            <td><input type="submit" value="Update"></td>
 
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
 
 
 

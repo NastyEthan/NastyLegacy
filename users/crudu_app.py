@@ -169,14 +169,10 @@ def update():
         saveKey = request.form.get("saveKey")
         po = users_by_id(userID)
         if po is not None:
-            po.update(name)
-            po.update(grade)
-            po.update(email)
-            po.update(period)
-            po.update(group)
-            po.update(ghName)
-            po.update(slName)
-            po.update(saveKey)
+            print("among")
+            if (saveKey == po.saveKey):
+                print("us")
+                po.update(name, grade, email, period, group, ghName, slName, saveKey)
     return redirect(url_for('usercrud.crudu'))
 
 
