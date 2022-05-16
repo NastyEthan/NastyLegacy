@@ -1,15 +1,26 @@
-# TEST FILE
-
 import hashlib # there could be a better hashing function, but this works
 
-password = hashlib.sha512(b'Y0Uc@nTg3tTH!S0ne').hexdigest()
-print(password) # checking
+red = "\033[31m"
+green = "\033[32m"
+yellow = "\033[33m"
+white = "\033[37m"
 
-userinput = input("what's the pass: ")
+def check(a,b):
+    if a == b:
+        print(green + 'SUCCESS!!!' + white) # :D
+    else:
+        print(red + "FAILURE" + white) # failure of course
+
+# password encrypting
+password = hashlib.sha512(b'CyberS2cUr!tY').hexdigest()
+print(yellow + "SHA512 hash of password" + white)
+print(password)
+
+# user input
+userinput = input(yellow + "what's the password: " + white)
 encrypted = hashlib.sha512(userinput.encode()).hexdigest()
-print(encrypted) # checking x2
+print(yellow + "SHA512 hash of input" + white)
+print(encrypted) # checking x2)
 
-if password == encrypted:
-    print('SUCCESS!!!') # :D
-else:
-    print("BEANS") # beans
+# function call
+check(password,encrypted)
