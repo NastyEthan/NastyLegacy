@@ -5,6 +5,7 @@ from __init__ import admin, login
 from flask_login import current_user, login_user, logout_user, UserMixin
 from flask_admin.contrib.sqla import ModelView
 
+
 class Users(db.Model, UserMixin):
     # define the Users schema
 
@@ -137,13 +138,39 @@ def login():
     if request.form:
         adminpass = request.form.get("adminpass")
         if (adminpass == "jmort123"):
-            user = Users.query.get(1)
+            user = Users.query.filter(Users.name == "Admin").first()
             login_user(user)
             return redirect("http://127.0.0.1:5000/admin/users") # where is the render template??? LMFAO
         else:
             print("no")
     return render_template("authorize.html")
 
+# def changepass():
+#     if request.form:
+#         adminpass = request.form.get("adminpass")
+#         old_password = request.form.get("classcode")
+#         new_password = request.form.get("nclasscode")
+#         if (adminpass == "jmort123"):
+#             # old_password == new_password
+#             print("Yes")
+#             return redirect("http://127.0.0.1:5000/login")
+#         else:
+#             print("no")
+#             return redirect("http://127.0.0.1:5000/changepass")
+#     return render_template("changepass.html")
+
+
+
+    # user = request.user
+    # old_password = request.POST['classcode']
+    # new_password1 = request.POST['nclasscode']
+    # new_password2 = request.POST['nclasscode']
+    # if user.check_password(old_password):
+    #     if new_password1 == new_password2:
+    #         user.set_password(new_password1)
+    #     return redirect("http://127.0.0.1:5000/login")
+    # else:
+    #     return redirect("http://127.0.0.1:5000/changepass")
 
 
 @app.route('/adminlogout/')
@@ -153,4 +180,3 @@ def logout():
 
 
 admin.add_view(MyModelView(Users, db.session))
-
