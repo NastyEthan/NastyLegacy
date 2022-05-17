@@ -53,9 +53,12 @@ def crud_login():
     classcode = "bingbong"
     if request.form:
         if classcode == request.form.get("classcode"):
+            # return redirect(url_for('usercrud.crudu'))
+            user = Users.query.filter(Users.name == "User").first()
+            login_user(user)
             return redirect(url_for('usercrud.crudu'))
         else:
-            return redirect(url_for('usercrud.crud_login'))
+            return redirect('/adminlogin')
         # password = request.form.get("password")
         # email = request.form.get("email")
         # if login(classcode):       # zero index [0] used as email is a tuple
