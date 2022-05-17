@@ -1,4 +1,8 @@
 flask-restful
+flask_login
+flask_sqlalchemy
+flask_migrate
+flask_admin
 pandas
 gunicorn
 absl-py==0.13.0

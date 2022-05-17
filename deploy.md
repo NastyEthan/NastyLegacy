@@ -1,16 +1,5 @@
 # NastyLegacy Deployment Guide
 
-We will use Amazon Webservices (AWS) to deploy our website. Nobody here has the money to spend on a Raspberry Pi. 
-
-We will [update](https://github.com/NastyLegacy/NastyLegacy/wiki/Deployment-Guide#updates) the website every week (Friday 8AM), so all final code should be pushed by Thursday at 10PM.
-
-## Deployment Order
-1. Michael (rest are backups)
-2. Sahil
-2. Ellen
-2. Anirudh
-2. Ethan
-
 ## AWS
 
 Using AWS, create an `EC2` instance
@@ -48,7 +37,7 @@ sudo apt-get install python3-pip nginx git
 sudo pip install virtualenv
 ```
 
-### Setup the GitHub Repo:
+### Setup the GitHub Repo
 
 ```bash
 # go to home directory
@@ -94,12 +83,12 @@ deactivate
 ### Changing Permissions
 
 ```bash
-chmod ubuntu:ubuntu /home/ubuntu/NastyLegacy
-find /home/ubuntu/NastyLegacy -type d exec chown nasty:ubuntu {} \;
-find /home/ubuntu/NastyLegacy -type f exec chown nasty:ubuntu {} \;
+chown ubuntu:ubuntu /home/ubuntu/NastyLegacy
+find /home/ubuntu/NastyLegacy -type d -exec chown ubuntu:ubuntu {} \;
+find /home/ubuntu/NastyLegacy -type f -exec chown ubuntu:ubuntu {} \;
 ```
 
-### Gunicorn
+### Gunicorn Testing
 
 Testing:
 
@@ -141,10 +130,10 @@ Begin setting up the NginX service
 
 ### NginX Config
 
-Note: 
+Note:
 
 - nastylegacy.cf = domain
-- 54.177.254.122 = Elastic IP from AWS
+- `52.9.190.46` = Elastic IP from AWS
 
 ```bash
 sudo nano /etc/nginx/sites-available/nasty
@@ -164,21 +153,22 @@ server {
 Restart:
 
 ```bash
+sudo rm /etc/nginx/sites-available/default; sudo rm /etc/nginx/sites-enabled/default
 sudo service nasty start
 sudo systemctl enable nasty
+sudo nginx -t
 sudo nginx -s reload
 sudo ufw allow 'Nginx Full'
 
 # Check
-sudo service ubuntu status 
+sudo service nasty status 
 journalctl -xe # check for errors
 ```
 
 If service is running properly
 
 ```bash
-sudo ln -s /etc/nginx/sites-available/ubuntu /etc/nginx/sites-enabled
-sudo ln -s /etc/nginx/sites-available/my-server /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/nasty /etc/nginx/sites-enabled
 sudo nginx -t # testing nginx config
 sudo nginx -s reload
 
@@ -195,14 +185,12 @@ Use [freenom.com](https://www.freenom.com/) to establish a domain `nastylegacy.c
 
 Use AWS Route53 to setup the routes to the Elastic IP of the web server
 
-- IP of our public server: `54.67.46.120`
+- IP of our public server: `52.9.190.46`
 
-Go back to [freenom.com](https://www.freenom.com/) and add the 4 custom nameservers from AWS Route53
+Go back to [freenom.com](https://www.freenom.com/) and click "Manage DNS"
 
-- ns-499.awsdns-62.com
-- ns-1349.awsdns-40.org
-- ns-1683.awsdns-18.co.uk
-- ns-898.awsdns-48.net
+- Add an A record pointing to the Elastic IP of our server
+- Add another A record WWW pointing to the Elastic IP of our server
 
 Think everything is working? Check:
 
@@ -252,7 +240,18 @@ curl -k http://nastylegacy.cf # failure (insecure)
 
 Now, the website is deployed!
 
->  Bing Chilling 🥶
+> :tada: UNLESS IT ISN'T?
+
+## Troubleshooting
+
+Adding this because it wasn't working for some browsers initially
+
+- Flush DNS: `ipconfig /flushdns`
+- Go to Internet Properties -> Content -> Clear SSL state (Windows Only - Mac users you are on your own)
+- Turn off your VPN ya monkey
+- Re-install browser
+
+> If the site does not load on any browser, go back and trace your steps because you messed up somewhere
 
 ## Updates
 
@@ -297,11 +296,10 @@ nasty
 ### Using `update.sh`
 
 ```bash
-ssh -i "nastym.pem" ubuntu@ec2-54-177-254-122.us-west-1.compute.amazonaws.com
+ssh -i "legacy.pem" ubuntu@ec2-52-9-190-46.us-west-1.compute.amazonaws.com
 sudo su # sudo perms, enter the password (nasty1234)
 cd /home/ubuntu/NastyLegacy # go to git directory
 bash update.sh # can also do "./update.sh"
 # fix any dependency and git issues
 # DONE
 ```
-
