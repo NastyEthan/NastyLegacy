@@ -92,13 +92,13 @@ def crud_login():
 #     # show the auth user page if the above fails for some reason
 #     return render_template("authorize.html")
 
-@login_manager.unauthorized_handler
-def unauthorized_callback():
-    return redirect('/adminlogin/')
+# @login_manager.unauthorized_handler
+# def unauthorized_callback():
+#     return redirect('/adminlogin/')
 
 # Default URL
 @app_crudu.route('/')
-@login_required # login_url="/adminlogin/"
+# @login_required # login_url="/adminlogin/"
 def crudu():
     """obtains all Users from table and loads Admin Form"""
     return render_template("crudu.html", table=users_all())
