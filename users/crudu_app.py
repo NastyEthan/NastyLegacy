@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, url_for, redirect, jsonify, make_response
-from flask_login import login_required, login_manager
+from flask_login import login_required, login_manager, logout_user
 from flask_restful import Api
 from users.model import Users
 import hashlib
@@ -193,3 +193,13 @@ def delete():
         if po is not None:
             po.delete()
     return redirect(url_for('usercrud.crudu'))
+
+
+@app_crudu.route('/adminlogout/')
+def logout():
+    logout_user()
+    return render_template("nasty.html")
+
+@app_crudu.route('/admin/')
+def admin():
+    return render_template("authorize.html")

@@ -33,8 +33,8 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
     </div>
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        <a class="nav-link" href="http://127.0.0.1:5000/adminlogin/">Login</a>
-        <a class="nav-link" href="http://127.0.0.1:5000/adminlogout/">Logout</a>
+        <a class="nav-link" href={{ url_for('usercrud.admin') }}>Login</a>
+        <a class="nav-link" href={{ url_for('usercrud.logout') }}>Logout</a>
     </div>
 
     <div>
