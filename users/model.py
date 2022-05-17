@@ -17,9 +17,10 @@ class Users(db.Model, UserMixin):
     group = db.Column(db.String(255), unique=False, nullable=False)
     ghName = db.Column(db.String(255), unique=False, nullable=False)
     slName = db.Column(db.String(255), unique=False, nullable=False)
+    saveKey = db.Column(db.String(255), unique=False, nullable=False)
 
     # constructor of a User object, initializes of instance variables within object
-    def __init__(self, name, grade, email, period, group, ghName, slName):
+    def __init__(self, name, grade, email, period, group, ghName, slName, saveKey):
         self.name = name
         self.grade = grade
         self.email = email
@@ -27,6 +28,7 @@ class Users(db.Model, UserMixin):
         self.group = group
         self.ghName = ghName
         self.slName = slName
+        self.saveKey = saveKey
 
     # CRUD create/add a new record to the table
     # returns self or None on error
@@ -53,11 +55,12 @@ class Users(db.Model, UserMixin):
             "group": self.group,
             "ghName": self.ghName,
             "slName": self.slName,
+            "saveKey": self.saveKey,
         }
 
     # CRUD update: updates users name, password, phone
     # returns self
-    def update(self, name="", grade="", email="", period="", group="", ghName="", slName=""):
+    def update(self, name="", grade="", email="", period="", group="", ghName="", slName="", saveKey=""):
         """only updates values with length"""
         if len(name) > 0:
             self.name = name
@@ -73,6 +76,8 @@ class Users(db.Model, UserMixin):
             self.ghName = ghName
         if len(slName) > 0:
             self.slName = slName
+        if len(saveKey) > 0:
+            self.saveKey = saveKey
         db.session.commit()
         return self
 
@@ -98,9 +103,10 @@ def users_model_tester():
     print("--------------------------")
     db.create_all()
     """Tester data for table"""
-    s1 = Users(name='Sahil', grade='11', email='sahillamarjacksonjr205@gmail.com', period='4', group='NastyLegacy', ghName='AD1616', slName='Sahil Samar')
-    s2 = Users(name='Anirudh', grade='12', email='anirudhramen@gmail.com', period='4', group='NastyLegacy', ghName='Anirudh123Nasty', slName='Anirudh Ramachandran')
-    table = [s1, s2]
+    s1 = Users(name='Admin', grade='Admin', email='Admin', period='Admin', group='Admin', ghName='Admin', slName='Admin', saveKey='Admin')
+    s2 = Users(name='Sahil', grade='11', email='sahillamarjacksonjr205@gmail.com', period='4', group='NastyLegacy', ghName='AD1616', slName='Sahil Samar', saveKey='1234')
+    s3 = Users(name='Anirudh', grade='12', email='anirudhramen@gmail.com', period='4', group='NastyLegacy', ghName='Anirudh123Nasty', slName='Anirudh Ramachandran', saveKey='5678')
+    table = [s1, s2, s3]
     for row in table:
         try:
             db.session.add(row)

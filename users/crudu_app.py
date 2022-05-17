@@ -93,13 +93,20 @@ def crud_login():
 #     # show the auth user page if the above fails for some reason
 #     return render_template("authorize.html")
 
+<<<<<<< HEAD
 @login_manager.unauthorized_handler
 def unauthorized():
     return redirect(url_for('usercrud.crud_login'))
+=======
+# @login_manager.unauthorized_handler
+# def unauthorized_callback():
+#     return redirect('/adminlogin/')
+
+>>>>>>> 543ebd6344e92e3db047547b182abd5b5de745b7
 
 # Default URL
 @app_crudu.route('/')
-@login_required # login_url="/adminlogin/"
+# @login_required # login_url="/adminlogin/"
 def crudu():
     """obtains all Users from table and loads Admin Form"""
     return render_template("crudu.html", table=users_all())
@@ -141,9 +148,9 @@ def create():
             request.form.get("group"),
             request.form.get("ghName"),
             request.form.get("slName"),
+            request.form.get("saveKey"),
         )
         po.create()
-        print("It is working")
     return redirect(url_for('usercrud.crudu'))
 
 
@@ -173,15 +180,13 @@ def update():
         group = request.form.get("group")
         ghName = request.form.get("ghName")
         slName = request.form.get("slName")
+        saveKey = request.form.get("saveKey")
         po = users_by_id(userID)
         if po is not None:
-            po.update(name)
-            po.update(grade)
-            po.update(email)
-            po.update(period)
-            po.update(group)
-            po.update(ghName)
-            po.update(slName)
+            print("among")
+            if (saveKey == po.saveKey):
+                print("us")
+                po.update(name, grade, email, period, group, ghName, slName, saveKey)
     return redirect(url_for('usercrud.crudu'))
 
 
