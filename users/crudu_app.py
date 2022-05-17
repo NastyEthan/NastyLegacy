@@ -1,6 +1,6 @@
 from __init__ import login_manager
 from flask import Blueprint, render_template, request, url_for, redirect, jsonify, make_response
-from flask_login import login_required # , login_manager
+from flask_login import current_user, login_required # , login_manager
 from flask_restful import Api
 from users.model import Users
 import hashlib
@@ -93,22 +93,17 @@ def crud_login():
 #     # show the auth user page if the above fails for some reason
 #     return render_template("authorize.html")
 
-<<<<<<< HEAD
 @login_manager.unauthorized_handler
 def unauthorized():
     return redirect(url_for('usercrud.crud_login'))
-=======
-# @login_manager.unauthorized_handler
-# def unauthorized_callback():
-#     return redirect('/adminlogin/')
-
->>>>>>> 543ebd6344e92e3db047547b182abd5b5de745b7
 
 # Default URL
 @app_crudu.route('/')
-# @login_required # login_url="/adminlogin/"
+@login_required
 def crudu():
     """obtains all Users from table and loads Admin Form"""
+    if not current_user.is_authenticated:
+        return redirect(url_for('usercrud.crud_login'))
     return render_template("crudu.html", table=users_all())
 
 @app_crudu.route('/admin')
