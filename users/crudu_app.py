@@ -1,5 +1,6 @@
+from __init__ import login_manager
 from flask import Blueprint, render_template, request, url_for, redirect, jsonify, make_response
-from flask_login import login_required, login_manager
+from flask_login import login_required # , login_manager
 from flask_restful import Api
 from users.model import Users
 import hashlib
@@ -93,8 +94,8 @@ def crud_login():
 #     return render_template("authorize.html")
 
 @login_manager.unauthorized_handler
-def unauthorized_callback():
-    return redirect('/adminlogin/')
+def unauthorized():
+    return redirect(url_for('usercrud.crud_login'))
 
 # Default URL
 @app_crudu.route('/')
