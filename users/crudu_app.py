@@ -1,6 +1,6 @@
 from __init__ import login_manager
 from flask import Blueprint, render_template, request, url_for, redirect, jsonify, make_response
-from flask_login import current_user, login_required # , login_manager
+from flask_login import current_user, login_required, login_user # , login_manager
 from flask_restful import Api
 from users.model import Users
 import hashlib
@@ -54,9 +54,12 @@ def crud_login():
     classcode = "bingbong"
     if request.form:
         if classcode == request.form.get("classcode"):
+            # return redirect(url_for('usercrud.crudu'))
+            user = Users.query.filter(Users.name == "User").first()
+            login_user(user)
             return redirect(url_for('usercrud.crudu'))
         else:
-            return redirect(url_for('usercrud.crud_login'))
+            return redirect('/adminlogin')
         # password = request.form.get("password")
         # email = request.form.get("email")
         # if login(classcode):       # zero index [0] used as email is a tuple
