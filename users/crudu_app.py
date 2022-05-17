@@ -96,6 +96,7 @@ def crud_login():
 # def unauthorized_callback():
 #     return redirect('/adminlogin/')
 
+
 # Default URL
 @app_crudu.route('/')
 # @login_required # login_url="/adminlogin/"
