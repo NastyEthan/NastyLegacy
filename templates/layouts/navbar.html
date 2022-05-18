@@ -28,7 +28,7 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
             <input type="text" class="form-control" id="term" placeholder="enter student name...">
         </div>
         <div>
-            <button class="btn btn-primary bg-secondary" data-bs-toggle="offcanvas" data-bs-target="#searchBar" onclick="nav_search();">Search</button>
+            <button class="btn btn-primary bg-secondary" data-bs-toggle="offcanvas" data-bs-target="#searchBar" onclick="nav_search();" >Search</button>
         </div>
     </div>
 
@@ -37,7 +37,7 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
         <a class="nav-link" href="http://127.0.0.1:5000/adminlogout/">Logout</a>
     </div>
 
-    <div>
+    <div id = "user">
         <h1> Logged in as {{ current_user.name }} </h1>
     </div>
 
@@ -181,6 +181,17 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
                 })
             })
     }
+    var currentUser = {{ current_user.name | safe}};
+    console.log(currentUser);
+    function showUser() {
+        if (currentUser == null) {
+            document.getElementById("user").style.display = "none";
+        }
+        else {
+            document.getElementById("user").style.display = "inline";
+        }
+    }
+    showUser();
 </script>
 
 
