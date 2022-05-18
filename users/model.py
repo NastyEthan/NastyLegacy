@@ -186,3 +186,4 @@ def login():
 
 
 admin.add_view(MyModelView(Users, db.session))
+
