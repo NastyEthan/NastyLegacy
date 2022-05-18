@@ -10,7 +10,7 @@ from users.model import MyModelView
 class Passwords(db.Model, UserMixin):
     # define the Password schema
     ID = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), unique=False, nullable=False)
+    name = db.Column(db.String(255), unique=True, nullable=False)
     password = db.Column(db.String(255), unique=False, nullable=False)
 
     # constructor of a User object, initializes of instance variables within object
@@ -72,14 +72,15 @@ def passwords_model_tester():
     print("--------------------------")
     db.create_all()
     """Tester data for table"""
-    s1 = Passwords(name='Admin', password='jmort123')
-    s2 = Passwords(name='Class', password='ramenchoppa')
-    table = [s1, s2]
+    t1 = Passwords(name='Admin', password='jmort123')
+    t2 = Passwords(name='Class', password='ramenchoppa')
+    table = [t1, t2]
     for row in table:
         try:
             db.session.add(row)
             db.session.commit()
         except IntegrityError:
+            print("error")
             db.session.remove()
 
 def passwords_model_printer():
