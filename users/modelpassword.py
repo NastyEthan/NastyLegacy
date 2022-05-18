@@ -16,7 +16,7 @@ class Passwords(db.Model, UserMixin):
     # constructor of a User object, initializes of instance variables within object
     def __init__(self, name, password):
         self.name = name
-        self.name = password
+        self.password = password
 
     # CRUD create/add a new record to the table
     # returns self or None on error
