@@ -179,10 +179,11 @@ def login():
     #     return redirect("http://127.0.0.1:5000/changepass")
 
 
-@app.route('/adminlogout/')
-def logout():
-    logout_user()
-    return render_template("nasty.html")
+# @app.route('/adminlogout/')
+# def logout():
+#     logout_user()
+#     return render_template("nasty.html")
 
 
 admin.add_view(MyModelView(Users, db.session))
+

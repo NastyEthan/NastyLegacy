@@ -1,6 +1,5 @@
-from __init__ import login_manager
 from flask import Blueprint, render_template, request, url_for, redirect, jsonify, make_response
-from flask_login import current_user, login_required, login_user # , login_manager
+from flask_login import login_required, login_manager, logout_user
 from flask_restful import Api
 from users.model import Users
 import hashlib
@@ -42,18 +41,18 @@ def users_by_name(name):
     """finds User in table matching phoneNumber """
     return Users.query.filter_by(name=name).first()
 
-def codeEncryption(code):
-    classcode = hashlib.sha512(code.encode()).hexdigest()
-
+def encryption(code):
+    encrypted = hashlib.sha512(code.encode()).hexdigest()
+    return encrypted
 
 """ app route section """
 # if login url, show phones table only
 @app_crudu.route('/login/', methods=["GET", "POST"])
 def crud_login():
     # obtains form inputs and fulfills login requirements
-    classcode = "bingbong"
+    classcode = encryption(users_by_name("Sahil").name)
     if request.form:
-        if classcode == request.form.get("classcode"):
+        if classcode == encryption(request.form.get("classcode")): # TESTS
             # return redirect(url_for('usercrud.crudu'))
             user = Users.query.filter(Users.name == "User").first()
             login_user(user)
@@ -97,16 +96,15 @@ def crud_login():
 #     return render_template("authorize.html")
 
 # @login_manager.unauthorized_handler
-# def unauthorized():
-#     return redirect(url_for('usercrud.crud_login'))
+# def unauthorized_callback():
+#     return redirect('/adminlogin/')
+
 
 # Default URL
 @app_crudu.route('/')
-# @login_required
+# @login_required # login_url="/adminlogin/"
 def crudu():
     """obtains all Users from table and loads Admin Form"""
-    if not current_user.is_authenticated:
-        return redirect('/adminlogin')
     return render_template("crudu.html", table=users_all())
 
 @app_crudu.route('/admin')
@@ -198,3 +196,13 @@ def delete():
         if po is not None:
             po.delete()
     return redirect(url_for('usercrud.crudu'))
+
+
+@app_crudu.route('/adminlogout/')
+def logout():
+    logout_user()
+    return render_template("nasty.html")
+
+@app_crudu.route('/admin/')
+def admin():
+    return render_template("authorize.html")
