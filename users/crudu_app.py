@@ -41,18 +41,18 @@ def users_by_name(name):
     """finds User in table matching phoneNumber """
     return Users.query.filter_by(name=name).first()
 
-def codeEncryption(code):
-    classcode = hashlib.sha512(code.encode()).hexdigest()
-
+def encryption(code):
+    encrypted = hashlib.sha512(code.encode()).hexdigest()
+    return encrypted
 
 """ app route section """
 # if login url, show phones table only
 @app_crudu.route('/login/', methods=["GET", "POST"])
 def crud_login():
     # obtains form inputs and fulfills login requirements
-    classcode = "bingbong"
+    classcode = encryption(users_by_name("Sahil").name)
     if request.form:
-        if classcode == request.form.get("classcode"):
+        if classcode == encryption(request.form.get("classcode")): # TESTS
             # return redirect(url_for('usercrud.crudu'))
             user = Users.query.filter(Users.name == "User").first()
             login_user(user)

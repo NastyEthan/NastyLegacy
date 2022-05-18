@@ -12,7 +12,7 @@ def check(a,b):
         print(red + "FAILURE" + white) # failure of course
 
 # password encrypting
-password = hashlib.sha512(b'CyberS2cUr!tY').hexdigest()
+password = hashlib.sha512(b'password').hexdigest()
 print(yellow + "SHA512 hash of password" + white)
 print(password)
 
