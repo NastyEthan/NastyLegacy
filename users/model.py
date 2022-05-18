@@ -184,6 +184,6 @@ def login():
 #     logout_user()
 #     return render_template("nasty.html")
 
-
 admin.add_view(MyModelView(Users, db.session))
+
 
