@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, url_for, redirect, jsonify, make_response
-from flask_login import login_required, login_manager, logout_user
+from flask_login import login_required, login_manager, logout_user, login_user
 from flask_restful import Api
 from users.model import Users
 import hashlib
@@ -44,6 +44,9 @@ def users_by_name(name):
 def encryption(code):
     encrypted = hashlib.sha512(code.encode()).hexdigest()
     return encrypted
+
+def codeEncryption(code):
+    classcode = hashlib.sha512(code.encode()).hexdigest()
 
 """ app route section """
 # if login url, show phones table only
@@ -144,7 +147,7 @@ def create():
             request.form.get("group"),
             request.form.get("ghName"),
             request.form.get("slName"),
-            request.form.get("saveKey"),
+            hashlib.sha512(request.form.get("saveKey").encode()).hexdigest(),
         )
         po.create()
     return redirect(url_for('usercrud.crudu'))
@@ -162,6 +165,9 @@ def read():
             table = [po.read()]  # placed in list for easier/consistent use within HTML
     return render_template("crudu.html", table=table)
 
+def encryption(code):
+    encrypted = hashlib.sha512(code.encode()).hexdigest()
+    return encrypted
 
 # CRUD update
 @app_crudu.route('/update/', methods=["POST"])
@@ -178,10 +184,9 @@ def update():
         slName = request.form.get("slName")
         saveKey = request.form.get("saveKey")
         po = users_by_id(userID)
+        keyz = hashlib.sha512(saveKey.encode()).hexdigest()
         if po is not None:
-            print("among")
-            if (saveKey == po.saveKey):
-                print("us")
+            if (keyz == po.saveKey):
                 po.update(name, grade, email, period, group, ghName, slName, saveKey)
     return redirect(url_for('usercrud.crudu'))
 
