@@ -28,7 +28,7 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
             <input type="text" class="form-control" id="term" placeholder="enter student name...">
         </div>
         <div>
-            <button class="btn btn-primary bg-secondary" data-bs-toggle="offcanvas" data-bs-target="#searchBar" onclick="nav_search();">Search</button>
+            <button class="btn btn-primary bg-secondary" data-bs-toggle="offcanvas" data-bs-target="#searchBar" onclick="nav_search();" >Search</button>
         </div>
     </div>
 
@@ -37,8 +37,10 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
         <a class="nav-link" href={{ url_for('usercrud.logout') }}>Logout</a>
     </div>
 
-    <div>
-        <h1> Logged in as {{ current_user.name }} </h1>
+    <div id = "user">
+        {% if current_user.is_authenticated %}
+            <h1> Logged in as {{ current_user.name }} </h1>
+        {% endif %}
     </div>
 
     {% block navbar_script %}
@@ -182,6 +184,3 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
             })
     }
 </script>
-
-
-
