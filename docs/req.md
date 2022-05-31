@@ -24,6 +24,26 @@
 * For hosting: host personally on AWS for developing for now, but later on Mr. Mortensen's personally pi or AWS will host it
 * Have security key to access the API as it has personal information of del norte students
 
+## Week 8
+
+### Third Meeting with Mr. Mortensen
+
+* We spoke prior about having data for everything I need to interact with students and projects.  You seem to have started on student side, now I have added requirements on project side.  This is to have a database to help build this pages...
+https://nighthawkcodingsociety.com/projectsearch/dash
+* The idea is to build the CRUD frontend and rendering so that students could point to their projects.  
+* This model is now using most of the relationship patterns in the documentation shown here:  https://docs.sqlalchemy.org/en/14/orm/basic_relationships.html
+* Essentially, we need to work on a frontend that easily displays the many to many association between projects and users.
+
+## Week 9
+
+### Fourth Meeting with Mr. Mortensen
+
+* Mr. Mortensen talked to us more about many to many associations. 
+* The function to automate associations is good progress. Continue to work on front end, which is the hard part. 
+* Next steps: Display projects from the site and have more intuitive UI.
+
+
 # Progress
 
 [ScrumBoard to show progress](https://github.com/NastyLegacy/NastyLegacy/projects/1)
+[ScrumBoard 2](https://github.com/NastyLegacy/NastyLegacy/projects/2)
