@@ -66,20 +66,20 @@ Sponsor will be any website that needs utilities such as canvas, or teachers esp
 
 [Updated info from meeting](https://nastylegacy.github.io/NastyLegacy/docs/req)
 
-## Week 3
-
-## Week 4
-
-## Week 5
-
-## Week 6
-
-## Week 7
 
 ## Week 8
 
+[Link to team review ticket for this week, which has individual tickets linked on it](https://github.com/NastyLegacy/NastyLegacy/issues/49)
+
+[Link to master plan update for this week](https://github.com/NastyLegacy/NastyLegacy/issues/50)
+
 ## Week 9
 
+[Link to master plan update for this week](https://github.com/NastyLegacy/NastyLegacy/issues/61)
+
 ## Week 10
+
+[Link to master plan update for this week](https://github.com/NastyLegacy/NastyLegacy/issues/60)
+
 
 ## Week 11
