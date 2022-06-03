@@ -85,5 +85,4 @@ Sponsor will be any website that needs utilities such as canvas, or teachers esp
 
 [Link to master plan update for this week](https://github.com/NastyLegacy/NastyLegacy/issues/60)
 
-
-## Week 11
+[Final Review Tickets](https://github.com/NastyLegacy/NastyLegacy/issues/77)
